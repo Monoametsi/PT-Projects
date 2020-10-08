@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i%20|%20Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%20|%20Hind:300,400,500,600,700');
+
 *{
 	box-sizing: border-box;
 }
@@ -16,51 +19,99 @@ section{
 #header{
 	display: flex;
 	flex-direction: column;
+	position: relative;
 	transition: .6s;
-	height: 20rem;
+	height: 100vh;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-image: linear-gradient(to right, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../IMAGES/img-Concor-homepage-banner-kromrivier_jeffreys_premix_train_t.jpg'); 
+	background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../IMAGES/img-Concor-homepage-banner-kromrivier_jeffreys_premix_train_t.jpg'); 
 }
 
 .topNav{
 	display: flex;
 	justify-content: space-around;
+	margin: 0;
+	padding: 0;
+	background-color: transparent;
 }
 
 .logo-title{
-	
+	padding: 12px 18px;
 }
 
-.logoName-title{
+.logo-title a{
 	text-decoration: none;
+}
+
+.comp-logo{
+	height: 100px;
+	cursor: pointer;
 }
 
 .nav{
+	display: flex;
 	list-style: none;
+	padding: 10px 0;
 }
 
-.nav li{
-	display: inline-block;
-	list-style: none;
+.nav-link{
+	cursor: pointer;
+	padding: 10px 15px;
+	margin: 0 8px;
 }
 
-.nav-link a{
+.nav a{
+	color: #fff;
+	font-family: "Poppins",sans-serif;
+	font-size: 1.4rem;
 	text-decoration: none;
+}
+
+#active{
+	opacity: 1;
+	width: 100%;
+}
+
+.line{
+	width: 0;
+	border: 0;
+	margin: 10px 0 auto 0;
+	border-bottom: 2px solid #F5F5F5;
+	opacity: 0;
+	transition: 0.3s;
+}
+
+.nav-link:hover .line{
+	opacity: 1;
+	width: 100%;
 }
 
 .companyTitle-cont{
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 20rem;
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .company-title{
-	text-shadow: 0px 0px 8px #000;
-	font-size: 3rem;
+	animation-name: smooth-in;
+	animation-duration: 2s;
+	letter-spacing: 1rem; 
+	text-shadow: 0px 0px 8px rgba(0,0,0,0.4);
+	font-size: 3.5rem;
+	font-weight: bold;
 	color: #fff;
 	font-family: montserrat, sans-serif;
 	z-index: 0;
+}
+
+@keyframes smooth-in{
+	0%{opacity: 0; transform: translate(-100rem, 0);}
+	50%{opacity: 0.4;}
+	75%{opacity: 0.7; transform: translate(5rem, 0);}
+	100%{opacity: 1; transform: translate(0, 0);}
 }
