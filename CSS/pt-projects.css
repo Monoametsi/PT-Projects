@@ -18,22 +18,29 @@ section{
 
 #header{
 	display: flex;
-	flex-direction: column;
 	position: relative;
-	transition: .6s;
 	height: 100vh;
+	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../IMAGES/img-Concor-homepage-banner-kromrivier_jeffreys_premix_train_t.jpg'); 
+	background-image: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../IMAGES/img-Concor-homepage-banner-kromrivier_jeffreys_premix_train_t.jpg'); 
 }
 
 .topNav{
 	display: flex;
 	justify-content: space-around;
+	top: 0;
+	position: fixed;
 	margin: 0;
 	padding: 0;
 	background-color: transparent;
+	width: 100%;
+	z-index: 50;
+}
+
+.nav-span{
+	white-space: nowrap;
 }
 
 .logo-title{
@@ -91,22 +98,21 @@ section{
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+	margin: auto;
+	z-index: 0;
 }
 
 .company-title{
+	text-align: center;
 	animation-name: smooth-in;
 	animation-duration: 2s;
+	text-align: center;
 	letter-spacing: 1rem; 
-	text-shadow: 0px 0px 8px rgba(0,0,0,0.4);
+	text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
 	font-size: 3.5rem;
 	font-weight: bold;
 	color: #fff;
 	font-family: montserrat, sans-serif;
-	z-index: 0;
 }
 
 @keyframes smooth-in{
@@ -114,4 +120,25 @@ section{
 	50%{opacity: 0.4;}
 	75%{opacity: 0.7; transform: translate(5rem, 0);}
 	100%{opacity: 1; transform: translate(0, 0);}
+}
+
+.aboutUs-header{
+	display: flex;
+	justify-content: center;
+}
+
+.aboutUs-title{
+	color: #fff;
+	text-shadow: -1px -1px 0 rgba(0, 0, 0, 1), 1px -1px 0 rgba(0, 0, 0, 1), -1px 1px 0 rgba(0, 0, 0, 1), 1px 1px 0 rgba(0, 0, 0, 1);
+	font-family: montserrat, sans-serif;
+	text-align: center;
+	font-size: 3.5rem;
+	font-weight: bold;
+	cursor: default;
+	transition: all 0.3s ease-in-out;
+}
+
+.aboutUs-title:hover{
+	color: #353535;
+	text-shadow: 0px 0px 0 rgba(0, 0, 0, 0);
 }
