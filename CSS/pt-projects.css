@@ -21,6 +21,7 @@ section{
 	overflow: hidden;
 	position: relative;
 	height: 100vh;
+	min-height: 40rem;
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
