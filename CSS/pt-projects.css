@@ -13,7 +13,7 @@ body{
 }
 
 section{
-	margin-bottom: 2rem;
+	margin-bottom: 4rem;
 }
 
 #header{
@@ -123,12 +123,12 @@ section{
 	100%{opacity: 1; transform: translate(0, 0);}
 }
 
-.aboutUs-header, .service-header{
+.section-header{
 	display: flex;
 	justify-content: center;
 }
 
-.aboutUs-title, .service-title{
+.section-title{
 	color: #fff;
 	text-shadow: -1px -1px 0 rgba(0, 0, 0, 1), 1px -1px 0 rgba(0, 0, 0, 1), -1px 1px 0 rgba(0, 0, 0, 1), 1px 1px 0 rgba(0, 0, 0, 1);
 	font-family: montserrat, sans-serif;
@@ -139,7 +139,7 @@ section{
 	transition: all 0.3s ease-in-out;
 }
 
-.aboutUs-title:hover, .service-title:hover{
+.section-title:hover{
 	color: #353535;
 	text-shadow: 0px 0px 0 rgba(0, 0, 0, 0);
 }
@@ -210,7 +210,7 @@ section{
 	line-height: 1.9rem;
 }
 
-.aboutUsMission-statement{
+.aboutUsMission-statement,.service-list{
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -218,7 +218,11 @@ section{
 	margin-top: 3.5rem;
 }
 
-.missionStatement-box{
+.service-list{
+	margin-top: 2rem;
+}
+
+.missionStatement-box, .service-box{
 	display: flex;
 	transition: 0.3s;
 	cursor: default;
@@ -231,12 +235,12 @@ section{
 	/*box-shadow: 6px 4px 8px rgba(0,0,0,0.2), -4px -2px 8px rgba(0,0,0,0.2), -2px -1px 8px rgba(0,0,0,0.2);*/
 }
 
-.missionStatement-box:hover{
+.missionStatement-box:hover, .service-box:hover{
 	background-color: #fff;
 	box-shadow: 2px 1px 8px rgba(0,0,0,0.2), -1px -1px 4px rgba(0,0,0,0.2), 0 0 2px rgba(0,0,0,0.2);
 }
 
-.box-title h1{
+.box-title h1, .servie-title h1{
 	font-weight: 600;
 	text-align: center;
 	font-size: 1.8rem;
@@ -244,9 +248,14 @@ section{
 	text-transform: uppercase;
 }
 
-.box-descript p{
+.box-descript p, .serviceBox-descript p{
 	text-align: center;
 	margin: 0 2rem;
 	margin-bottom: 1.5rem;
 	line-height: 1.9rem;
+}
+
+.serviceBox-image img{
+	width: 180px;
+	height: 180px;
 }
