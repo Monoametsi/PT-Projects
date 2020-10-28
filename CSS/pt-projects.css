@@ -237,6 +237,7 @@ section{
 
 .project-slideshow{
 	margin-top: 3rem;
+	height: 40rem;
 }
 
 .project-box{
@@ -298,7 +299,7 @@ section{
 }
 
 .project-image img{
-	transform: scale(1.02);
+	transform: scale(1.01);
 	transition: 0.6s;
 	border-radius: 5px 5px 0 0;
 	width: 100%;
@@ -307,6 +308,63 @@ section{
 
 .project-image img:hover{
 	transform: scale(1.1);
+}
+
+#projectBox-modal{
+	display: none;
+}
+
+.projectBox-modal{
+	display: flex;
+	justify-content: space-between;
+	overflow: auto;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 50;
+	background-color: rgba(0,0,0,0.9);
+	animation-name: smoove-in;
+	animation-duration: 0.3s;
+}
+
+@keyframes smoove-in{
+	0%{opacity: 0;}
+	100%{opacity: 1;}
+}
+
+.smooth-out{
+	animation-name: smooth-out;
+	animation-duration: 0.3s;
+}
+
+@keyframes smooth-out{
+	0%{opacity: 1;}
+	100%{opacity: 0;}
+}
+
+.projectModal-box > .project-image img, .projectModal-box > .project-image{
+	cursor: pointer;
+	border-radius: 5px;
+	user-select: none;
+}
+
+.projectModal-box > .project-image img{
+	height: 350px;
+}
+
+.projectModal-box > .project-title h1, .projectModal-box >  .project-description p{
+	color: #fff;
+}
+
+.projectModal-box > .project-title h1{
+	padding: 0;
+}
+
+.projectModal-box >  .project-description p{
+	margin: 0;
+	margin-bottom: 0;
 }
 
 .project-slideshow{
@@ -318,6 +376,99 @@ section{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.projectModal-box{
+	display: flex;
+	position: relative;
+	transition: 0.3s;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 550px;
+	margin: 1.5rem 0;
+}
+
+.modalSlideShow-tracker{
+	position: absolute;
+	align-self: flex-start;
+	top: 1.5rem;
+	left: 3rem;
+}
+
+.modal-closer{
+	position: absolute;
+	align-self: flex-start;
+	top: 1.5rem;
+	right: 3rem;
+}
+
+.fa-camera, .track-num, .close-btn{
+	transition: 0.6s;
+	font-size: 2rem;
+	color: #fff;
+}
+
+.close-btn{
+	cursor: pointer;
+	font-weight: 600;
+}
+
+.close-btn:hover{
+	color: rgb(220,0,0);
+	text-decoration: none;
+}
+
+.track-num{
+	padding-left: 4px;
+}
+
+.boxModal-content{
+	display: flex;
+	justify-content: space-between;
+}
+
+.slideLeft{
+	animation-name: smooth-Left;
+	animation-duration: 0.4s;
+}
+
+@keyframes smooth-Left{
+	0%{opacity: 0.3; transform: translate(0, 0);}
+	100%{opacity: 0; transform: translate(-25rem, 0);}
+}
+
+.slideRight{
+	animation-name: slideOut-right;
+	animation-duration: 0.4s;
+}
+
+@keyframes slideOut-right{
+	0%{opacity: 0.3; transform: translate(0, 0);}
+	100%{opacity: 0; transform: translate(25rem, 0);}
+}
+
+
+.slideOut{
+	animation-name: slide-Out;
+	animation-duration: 0.4s;
+}
+
+@keyframes slide-Out{
+	0%{opacity: 0; transform: translate(25rem, 0);}
+	75%{opacity: 0.7;}
+	100%{opacity: 1; transform: translate(0, 0);}
+}
+
+.slideIn{
+	animation-name: slide-in;
+	animation-duration: 0.4s;
+}
+
+@keyframes slide-in{
+	0%{opacity: 0; transform: translate(-25rem, 0);}
+	75%{opacity: 0.7;}
+	100%{opacity: 1; transform: translate(0, 0);}
 }
 
 .arrow{
@@ -332,6 +483,10 @@ section{
 }
 
 #left{
+	transform: rotate(180deg);
+}
+
+#modal-left{
 	transform: rotate(180deg);
 }
 
