@@ -126,6 +126,7 @@ section{
 .section-header{
 	display: flex;
 	justify-content: center;
+	flex-direction: column;
 }
 
 .section-title{
@@ -142,6 +143,12 @@ section{
 .section-title:hover{
 	color: #353535;
 	text-shadow: 0px 0px 0 rgba(0, 0, 0, 0);
+}
+
+.section-descript{
+	margin-top: -2rem;
+	font-size: 1.2rem;
+	align-self: center;
 }
 
 /*.aboutInfo-cont{
@@ -344,7 +351,7 @@ section{
 	100%{opacity: 0;}
 }
 
-.projectModal-box > .project-image img, .projectModal-box > .project-image{
+.projectModal-box > .project-image img, .projectModal-box > .project-image, .project-image img{
 	cursor: pointer;
 	border-radius: 5px;
 	user-select: none;
@@ -435,7 +442,7 @@ section{
 
 @keyframes smooth-Left{
 	0%{opacity: 0.3; transform: translate(0, 0);}
-	100%{opacity: 0; transform: translate(-25rem, 0);}
+	100%{opacity: 0; transform: translate(-15rem, 0);}
 }
 
 .slideRight{
@@ -445,7 +452,7 @@ section{
 
 @keyframes slideOut-right{
 	0%{opacity: 0.3; transform: translate(0, 0);}
-	100%{opacity: 0; transform: translate(25rem, 0);}
+	100%{opacity: 0; transform: translate(15rem, 0);}
 }
 
 
@@ -455,7 +462,7 @@ section{
 }
 
 @keyframes slide-Out{
-	0%{opacity: 0; transform: translate(25rem, 0);}
+	0%{opacity: 0; transform: translate(15rem, 0);}
 	75%{opacity: 0.7;}
 	100%{opacity: 1; transform: translate(0, 0);}
 }
@@ -466,7 +473,7 @@ section{
 }
 
 @keyframes slide-in{
-	0%{opacity: 0; transform: translate(-25rem, 0);}
+	0%{opacity: 0; transform: translate(-15rem, 0);}
 	75%{opacity: 0.7;}
 	100%{opacity: 1; transform: translate(0, 0);}
 }

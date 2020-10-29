@@ -5,18 +5,18 @@ let boxPos = 1;
 
 slideBox[boxPos - 1].style.display = 'flex';
 
-function boxSlider(elemntPos, anime1, anime2, anime3, anime4){
+function boxSlider(elemntPos, slideImages, anime1, anime2, anime3, anime4){
 	
-	for(i = 0; i < slideBox.length; i++){
-		slideBox[i].classList.add(anime1);
-		slideBox[i].classList.remove(anime2, anime3, anime4);
+	for(i = 0; i < slideImages.length; i++){
+		slideImages[i].classList.add(anime1);
+		slideImages[i].classList.remove(anime2, anime3, anime4);
 
 		setTimeout(
 			function(){
-				for(i = 0; i < slideBox.length; i++){
-					slideBox[i].classList.remove(anime1, anime3, anime4);
-					slideBox[i].classList.add(anime2);
-					slideBox[i].style.display = 'none';
+				for(i = 0; i < slideImages.length; i++){
+					slideImages[i].classList.remove(anime1, anime3, anime4);
+					slideImages[i].classList.add(anime2);
+					slideImages[i].style.display = 'none';
 				}
 		}, 400);
 
@@ -24,49 +24,74 @@ function boxSlider(elemntPos, anime1, anime2, anime3, anime4){
 	
 	elemntPos;
 	
-	if(boxPos > slideBox.length){
+	if(boxPos > slideImages.length){
 		boxPos = 1;
 	}else if(boxPos < 1){
-		boxPos = slideBox.length;
+		boxPos = slideImages.length;
 	}
+	
+	let fullImageAmount = slideImages.length;
+	
+	imgNumTracker.innerHTML = `${boxPos}/${fullImageAmount}`;
 	
 	setTimeout(
 		function(){
-			slideBox[boxPos - 1].style.display = 'flex';
+			slideImages[boxPos - 1].style.display = 'flex';
 		}, 
 	450);
 	
 }
 
 leftArrow.onclick = function(){
-	boxSlider(boxPos += -1, 'slideRight', 'slideIn', 'slideLeft', 'slideOut');
+	boxSlider(boxPos += -1, slideBox, 'slideRight', 'slideIn', 'slideLeft', 'slideOut');
 }
 
 rightArrow.onclick = function(){
-	boxSlider(boxPos += 1, 'slideLeft', 'slideOut', 'slideRight', 'slideIn');
+	boxSlider(boxPos += 1, slideBox, 'slideLeft', 'slideOut', 'slideRight', 'slideIn');
 }
 
 //Modal system
 
 let modal = document.getElementById('projectBox-modal');
+let modalSlider = document.getElementsByClassName('projectModal-box');
 let modalCloser = document.getElementById('close-btn');
 let modalLeftArrow = document.getElementById('modal-left');
 let modalRightArrow = document.getElementById('modal-right');
-let imgNumTracker = document.getElementById("track-num");
-let modalImage = document.getElementById('modal-image');
-let modalTitle = document.getElementById('modal-title');
-let modalDesription = document.getElementById('modal-description');
+let imgNumTracker = document.getElementById('track-num');
+
+function modalSlide(elemntPos, slideImages){
+	
+	for(i = 0; i < slideImages.length; i++){
+		slideImages[i].classList.remove('smooth-out','slideRight', 'slideIn', 'slideLeft', 'slideOut');
+		slideImages[i].style.display = 'none';
+	}
+	
+	elemntPos;
+	
+	if(boxPos > slideImages.length){
+		boxPos = 1;
+	}else if(boxPos < 1){
+		boxPos = slideImages.length;
+	}
+	
+	let fullImageAmount = slideImages.length;
+	
+	imgNumTracker.innerHTML = `${boxPos}/${fullImageAmount}`;
+	
+	slideImages[boxPos - 1].style.display = 'flex';
+	
+}
 
 for(i = 0; i < slideBox.length; i++){
-	slideBox[i].onclick = function(){
-		modal.classList.remove('smooth-out');
-		modal.style.display = 'flex';
-		modalImage.children[0].src = this.children[0].children[0].src;
-		modalTitle.innerHTML = this.children[1].children[0].innerHTML;
-		modalDesription.innerHTML = this.children[2].children[0].innerHTML;
-		document.body.style.overflow = 'hidden';
-		document.documentElement.style.overflow = 'hidden';
-	}
+	(function(index){
+			slideBox[i].onclick = function(){
+			modal.classList.remove('smooth-out');
+			modal.style.display = 'flex';
+			modalSlide(boxPos = index + 1, modalSlider);
+			document.body.style.overflow = 'hidden';
+			document.documentElement.style.overflow = 'hidden';
+		};
+	})(i)
 }
 
 modalCloser.onclick = function(){
@@ -89,14 +114,14 @@ window.onclick = function(){
 			document.body.style.overflow = 'auto';
 			document.documentElement.style.overflow = 'auto';
 		},
-	300)
+	300);
 	}
 }
 
-/*modalLeftArrow.onclick = function(){
-	boxSlider(boxPos += -1);
+modalLeftArrow.onclick = function(){
+	boxSlider(boxPos += -1, modalSlider, 'slideRight', 'slideIn', 'slideLeft', 'slideOut');
 }
 
 modalRightArrow.onclick = function(){
-	boxSlider(boxPos += -1);
-}*/
+	boxSlider(boxPos += 1, modalSlider, 'slideLeft', 'slideOut', 'slideRight', 'slideIn');
+}
