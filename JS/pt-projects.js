@@ -2,6 +2,7 @@ let leftArrow = document.getElementById('left');
 let rightArrow = document.getElementById('right');
 let slideBox = document.getElementsByClassName('project-box');
 let boxPos = 1;
+let count = 1;
 
 slideBox[boxPos - 1].style.display = 'flex';
 
@@ -39,8 +40,45 @@ function boxSlider(elemntPos, slideImages, anime1, anime2, anime3, anime4){
 			slideImages[boxPos - 1].style.display = 'flex';
 		}, 
 	450);
-	
 }
+
+function boxSlid(elemntPos, slideImages, anime1, anime2, anime3, anime4){
+	
+	for(i = 0; i < slideImages.length; i++){
+		slideImages[i].classList.add(anime1);
+		slideImages[i].classList.remove(anime2, anime3, anime4);
+
+		setTimeout(
+			function(){
+				for(i = 0; i < slideImages.length; i++){
+					slideImages[i].classList.remove(anime1, anime3, anime4);
+					slideImages[i].classList.add(anime2);
+					slideImages[i].style.display = 'none';
+				}
+		}, 400);
+
+	}
+	
+	elemntPos;
+	
+	if(count > slideImages.length){
+		count = 1;
+	}else if(count < 1){
+		count = slideImages.length;
+	}
+	
+	let fullImageAmount = slideImages.length;
+	
+	imgNumTracker.innerHTML = `${count}/${fullImageAmount}`;
+	
+	setTimeout(
+		function(){
+			slideImages[count - 1].style.display = 'flex';
+		}, 
+	450);
+}
+
+
 
 leftArrow.onclick = function(){
 	boxSlider(boxPos += -1, slideBox, 'slideRight', 'slideIn', 'slideLeft', 'slideOut');
@@ -87,11 +125,11 @@ for(i = 0; i < slideBox.length; i++){
 			slideBox[i].onclick = function(){
 			modal.classList.remove('smooth-out');
 			modal.style.display = 'flex';
-			modalSlide(boxPos = index + 1, modalSlider);
+			modalSlide(count = index + 1, modalSlider);
 			document.body.style.overflow = 'hidden';
 			document.documentElement.style.overflow = 'hidden';
 		};
-	})(i)
+	})(i);
 }
 
 modalCloser.onclick = function(){
@@ -119,9 +157,9 @@ window.onclick = function(){
 }
 
 modalLeftArrow.onclick = function(){
-	boxSlider(boxPos += -1, modalSlider, 'slideRight', 'slideIn', 'slideLeft', 'slideOut');
+	boxSlid(count += -1, modalSlider, 'slideRight', 'slideIn', 'slideLeft', 'slideOut');
 }
 
 modalRightArrow.onclick = function(){
-	boxSlider(boxPos += 1, modalSlider, 'slideLeft', 'slideOut', 'slideRight', 'slideIn');
+	boxSlid(count += 1, modalSlider, 'slideLeft', 'slideOut', 'slideRight', 'slideIn');
 }

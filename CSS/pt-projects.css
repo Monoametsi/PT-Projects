@@ -12,6 +12,10 @@ body{
 	background-color: #eee7;`
 }
 
+a{
+	text-decoration: none;
+}
+
 section{
 	margin-bottom: 4rem;
 }
@@ -126,6 +130,9 @@ section{
 .section-header{
 	display: flex;
 	justify-content: center;
+}
+
+.contactTitle-cont{
 	flex-direction: column;
 }
 
@@ -150,53 +157,6 @@ section{
 	font-size: 1.2rem;
 	align-self: center;
 }
-
-/*.aboutInfo-cont{
-	display: flex;
-	justify-content: center;
-	margin: 0 2rem;
-}
-
-.about-image{
-	overflow: hidden;
-	width: 170%;
-	margin: 0 4rem;
-	margin-right: -2rem;
-	transition: 0.5s;
-	box-shadow: 8px -5px 5px rgba(0,0,0,0.4), 8px -5px 5px rgba(0,0,0,0.2);
-}
-
-.about-image{
-	display: flex;
-}
-
-.about-image img{
-	height: 450px;
-	width: 100%;
-	max-width: 450px;
-	cursor: pointer;
-	transition: 1s;
-}
-
-.aboutImage:hover{
-	transform: scale(1.2);
-}
-
-.about-image:hover{
-	box-shadow: -4px 2.5px 8px rgba(0,0,0,0.4), 4px -2px 8px rgba(0,0,0,0.4);
-}
-
-.about-descript{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.aboutDescript-paragrah{
-	text-align: left;
-	width: 75%;
-	line-height: 1.9rem;
-}*/
 
 .aboutInfo-cont{
 	display: flex;
@@ -243,7 +203,7 @@ section{
 }
 
 .project-slideshow{
-	margin-top: 3rem;
+	margin-top: 2rem;
 	height: 40rem;
 }
 
@@ -506,10 +466,11 @@ section{
 	display: flex;
 	justify-content: space-around;
 	margin: 2rem;
+	margin-top: 3.5rem;
 }
 
 .contactForm-cont{
-	width: 40%;
+	width: 50%;
 	margin-right: -4rem;
 	margin-left: 4rem;
 }
@@ -579,19 +540,19 @@ input[type=submit]:hover{
 
 .contact-details{
 	display: flex;
-	justify-content: center;
+	justify-content: flex-end;
 	flex-wrap: wrap;
-	margin: 0;
+	margin-right: 4rem;
 }
 
 .contactDetails-box{
 	display: flex;
-	box-shadow: 0 0 30px rgba(0,0,0,0.2);
+	box-shadow: 0 0 30px rgba(0,0,0,0.1);
 	flex-direction: column;
 	align-items: center;
 	background-color: #fff;
 	padding: 12px 8px;
-	width: 38%;
+	width: 42.5%;
 }
 
 .contactBox-icon img{
@@ -602,7 +563,7 @@ input[type=submit]:hover{
 }
 
 .contactBox-title h4{
-	font-family: "Poppins",sans-serif;
+	font-family: "Poppins", sans-serif;
 	font-weight: 500;
 	font-size: 1.5rem;
 	margin-bottom: -8px;
@@ -610,4 +571,71 @@ input[type=submit]:hover{
 
 .contactBox-description p{
 	font-size: 1.1rem;
+}
+
+.footer{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #0fa0dc;
+}
+
+.social-icons{
+	display: flex;
+	list-style: none;
+}
+
+.social-links{
+	display: flex;
+	transition: 0.3s;
+	cursor: pointer;
+	align-items: center;
+	justify-content: center;
+	padding: 0 2px;
+	width: 58px;
+	height: 53px;
+	margin: 0 5px;
+	font-size: 2rem;
+	background-color: #5fefda;
+	border-radius: 100%;
+}
+
+.social-links a{
+	font-weight: bold;
+	transition: 0.3s;
+	color: #fff;
+}
+
+.social-links:hover{
+	color: #000;
+	background-color: #0fefda;
+}
+
+.social-links:hover  a{
+	color: #000;
+}
+
+.footer-title h1{
+	font-size: 1.2rem;
+	color: #fff;
+	font-family: montserrat, sans-serif;
+}
+
+.page-shooter{
+	margin-right: 2rem;
+}
+
+.shoot{
+	cursor: pointer;
+	transition: 0.3s;
+	background-color: #fff;
+	border-radius: 100%;
+	padding: 1rem;
+	font-size: 1.5rem;
+	text-align: center;
+}
+
+.shoot:hover{
+	color: #fff;
+	background-color: #0fefda;
 }
