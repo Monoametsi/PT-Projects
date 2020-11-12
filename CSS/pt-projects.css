@@ -43,6 +43,16 @@ section{
 	background-color: transparent;
 	width: 100%;
 	z-index: 50;
+	transition: 0.6s;
+}
+
+.navBgColor{
+	background-color: rgba(0,0,0,0.8);
+	box-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+
+.navBgColor:hover{
+	background-color: rgba(0,0,0,1);
 }
 
 .nav-span{
@@ -602,17 +612,17 @@ input[type=submit]:hover{
 
 .social-links a{
 	font-weight: bold;
-	transition: 0.3s;
+	transition: 0.25s;
 	color: #fff;
 }
 
 .social-links:hover{
-	color: #000;
+	color: transparent;
 	background-color: #0fefda;
 }
 
 .social-links:hover  a{
-	color: #000;
+	color: #0fa0dc;
 }
 
 .footer-title h1{
