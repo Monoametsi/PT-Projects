@@ -6,10 +6,6 @@ let service = document.getElementById('Service');
 let projects = document.getElementById('Projects');
 let contactUs = document.getElementById('Contact-Us');
 
-function(){
-	
-}
-
 window.onscroll = function navClassAdder(){
 	if(document.documentElement.scrollTop > 20){
 		topNav.classList.add('navBgColor');
