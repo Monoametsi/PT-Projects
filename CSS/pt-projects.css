@@ -109,6 +109,11 @@ section{
 	width: 100%;
 }
 
+.fullLine{
+	opacity: 1;
+	width: 100%;
+}
+
 .companyTitle-cont{
 	display: flex;
 	align-items: center;
