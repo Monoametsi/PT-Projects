@@ -110,6 +110,7 @@ section{
 }
 
 .fullLine{
+	transition: 0.3s;
 	opacity: 1;
 	width: 100%;
 }
@@ -515,6 +516,11 @@ section{
 	border: 1px solid #0bacde;
 }
 
+.required{
+	color: red;
+	padding-left: 5px;
+}
+
 textarea{
 	background-color: transparent;
 	font-family: "Poppins",sans-serif;
@@ -533,6 +539,30 @@ textarea{
 
 textarea::placeholder{
 	font-size: 1.2rem;
+}
+
+.label-cont{
+	display: flex;
+	justify-content: space-between;
+}
+
+.validation-message{
+	display: none;
+	color: #fff;
+	padding: 0 5px;
+	margin-right: 3px;
+	font-weight: 600;
+	background-color: red;
+	border-radius: 3px;
+}
+
+.error{
+	border: 1px solid #FF5555;
+}
+
+.error:focus{
+	border: 1px solid #FF0000;
+	box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
 }
 
 input[type=submit]{

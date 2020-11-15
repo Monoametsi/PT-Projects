@@ -22,7 +22,7 @@
 			<ol class="nav">
 				<a href="#" id="home"><li class="nav-link"><span class="nav-span">Home</span><hr class="line"></li></a>
 				<a href="#aboutUs-cont" id="About-Us"><li class="nav-link"><span class="nav-span">About Us</span><hr class="line"></li></a>
-				<a href="#service-cont" id="Service"><li class="nav-link"><span class="nav-span">Service</span><hr class="line"></li></a>
+				<a href="#service-cont" id="Service"><li class="nav-link"><span class="nav-span">Services</span><hr class="line"></li></a>
 				<a href="#project-cont" id="Projects"><li class="nav-link"><span class="nav-span">Projects</span><hr class="line"></li></a>
 				<!-- <a href="#team-cont"><li class="nav-link"><span class="nav-span">Team</span><hr class="line"></li></a> -->
 				<a href="#contactUs-cont" id="Contact-Us"><li class="nav-link"><span class="nav-span">Contact Us</span><hr class="line"></li></a>
@@ -324,24 +324,32 @@
 				<div class="form-cont">
 					<form action="#" method="POST" class="form">
 						<div class="inputField-cont">
-							<label>Name</label>
+							<div class="label-cont">
+								<label for="name">Name<span class="required">*</span></label>
+								<span id="errorName-message" class="validation-message"></span>
+							</div>
 							<input type="text" placeholder="Your Name" name="name" id="name" class="inputField">
 						</div>
 
 						<div class="inputField-cont">
-							<label>Email</label>
-							<input type="text" placeholder="Your Email" name="name" id="name" class="inputField">
+							<div class="label-cont">
+								<label for="email">Email<span class="required">*</span></label>
+								<span id="errorEmail-message" class="validation-message"></span>
+							</div>
+							<input type="text" placeholder="Your Email" name="email" id="email" class="inputField">
 						</div>
 						
 						<div class="inputField-cont">
-							<label>Message</label>
-							<textarea placeholder="Message"></textarea>
+							<div class="label-cont">
+								<label for="name">Message<span class="required">*</span></label>
+								<span id="errorTextmsg-message" class="validation-message"></span>
+							</div>
+							<textarea placeholder="Message" name="message" id="message"></textarea>
 						</div>
-						<input type="Submit" value="Submit">
+						<input type="Submit" value="Submit" id="submit">
 					</form>
 				</div>
 			</div>
-
 		
 			<div class="contact-details">
 				<div class="contactDetails-box">
@@ -418,5 +426,6 @@
 
 <script src="../JS/pt-projects.js"></script>
 <script src="../JS/SlideShow.js"></script>
+<script src="../JS/formValidation.js"></script>
 </body>
 </html>

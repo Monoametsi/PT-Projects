@@ -1,6 +1,7 @@
 //menu functions
 let topNav = document.getElementById('topNav');
 let home = document.getElementById('home');
+let header = document.getElementById('header');
 let aboutUs = document.getElementById('About-Us');
 let aboutUsSect = document.getElementById('aboutUs-cont');
 let service = document.getElementById('Service');
@@ -11,17 +12,20 @@ let contactUs = document.getElementById('Contact-Us');
 let contactUsSect = document.getElementById('contactUs-cont');
 
 window.onscroll = function(){
-	let y = document.documentElement.scrollTop;
-	if(document.documentElement.scrollTop > 20){
+	let htmlDocScroll = document.documentElement.scrollTop;
+	if(htmlDocScroll > 20){
 		topNav.classList.add('navBgColor');
 	}else{
 		topNav.classList.remove('navBgColor');
 	}
-	
-	//console.log(`${y}`);
+
+	onScrollNavClassAdder(aboutUsSect, aboutUs);
+	onScrollNavClassAdder(serviceSect, service);
+	onScrollNavClassAdder(projectsSect, projects);
+	onScrollNavClassAdder(contactUsSect, contactUs);
 }
 
-//scrollTop function
+//scrollTop and navScroll function
 let scrollTop = document.getElementById('scrollTop');
 
 let line = document.getElementsByClassName('line');
@@ -55,65 +59,89 @@ home.onclick = function(event){
 	this.children[0].children[1].classList.add('fullLine');
 }
 
-function navToSectScroller(section){
+function navToSectScroller(section,e,thisElemnt){
+	e.preventDefault();
 	let sect = section;
 	let pagePos = 0;
-	let scrollerLooper = setInterval(scroller, 20);
-	
+	let scrollerDownLooper = setInterval(scrollerDown, 20);
 
 	for(i = 0; i < line.length; i++){
 		line[i].classList.remove('fullLine');
 	}
+	
+	thisElemnt.children[0].children[1].classList.add('fullLine');
 
-	function scroller(){
-		let y = document.documentElement.scrollTop;
-		let x = sect.offsetTop - topNav.clientHeight;
+	function scrollerDown(){
+		let htmlDocScroll = document.documentElement.scrollTop;
+		let sectionOffsetTop = sect.offsetTop - topNav.clientHeight;
 		
-		if(y < x){
-			
+		if(htmlDocScroll < sectionOffsetTop){
 			scrollBy(0, pagePos++);
 		}else{
-			console.log(`${y} / ${x}`);
-			clearInterval(scrollerLooper);
+			clearInterval(scrollerDownLooper);
 		}
 	}
 	
 	let scrollerUpLooper = setInterval(scrollerUp, 20);
 	
 	function scrollerUp(){
-		let y = document.documentElement.scrollTop;
-		let x = sect.offsetTop - topNav.clientHeight;
+		let htmlDocScroll = document.documentElement.scrollTop;
+		let sectionOffsetTop = sect.offsetTop - topNav.clientHeight + 65;
 
-		if(y > x){
+		if(htmlDocScroll > sectionOffsetTop){
 			scrollBy(0, pagePos--);
 		}else{
-			console.log(`${y} / ${x}`);
 			clearInterval(scrollerUpLooper);
 		}
 	}
 }
 
+function onScrollNavClassAdder(section, thisElemnt){
+	let sect = section;
+	let elemnt = thisElemnt;
+	
+	elemnt.children[0].children[1].classList.remove('fullLine');
+	
+	if(document.documentElement.scrollTop < header.clientHeight - topNav.clientHeight){
+		home.children[0].children[1].classList.add('fullLine');
+	}else{
+		home.children[0].children[1].classList.remove('fullLine');
+	}
+
+	function scrollerDown(){
+		let htmlDocScroll = document.documentElement.scrollTop;
+		let sectionOffsetTop = sect.offsetTop - topNav.clientHeight;
+		
+		if(htmlDocScroll > sectionOffsetTop + sect.clientHeight){
+			elemnt.children[0].children[1].classList.remove('fullLine');
+		}
+	}
+
+	function scrollerUp(){
+		let htmlDocScroll = document.documentElement.scrollTop;
+		let sectionOffsetTop = sect.offsetTop - topNav.clientHeight;
+
+		if(htmlDocScroll > sectionOffsetTop){
+			elemnt.children[0].children[1].classList.add('fullLine');
+		}
+	}
+	
+	scrollerUp();
+	scrollerDown();
+}
+
 aboutUs.onclick = function(){
-	event.preventDefault();
-	console.log(topNav.clientHeight);
-	navToSectScroller(aboutUsSect);
-	this.children[0].children[1].classList.add('fullLine');
+	navToSectScroller(aboutUsSect, event, this);
 }
 
 service.onclick = function(){
-	event.preventDefault();
-	navToSectScroller(serviceSect);
-	this.children[0].children[1].classList.add('fullLine');
+	navToSectScroller(serviceSect, event, this);
 }
 
 projects.onclick = function(){
-	event.preventDefault();
-	navToSectScroller(projectsSect);
-	this.children[0].children[1].classList.add('fullLine');
+	navToSectScroller(projectsSect, event, this);
 }
 
 contactUs.onclick = function(){
-	event.preventDefault();
-	navToSectScroller(contactUsSect);
-	this.children[0].children[1].classList.add('fullLine');
+	navToSectScroller(contactUsSect, event, this);
 }
