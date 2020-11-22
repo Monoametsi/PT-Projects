@@ -1,10 +1,12 @@
 let leftArrow = document.getElementById('left');
 let rightArrow = document.getElementById('right');
 let slideBox = document.getElementsByClassName('project-box');
+let dots = document.getElementsByClassName('dots');
 let boxPos = 1;
 let count = 1;
 
 slideBox[boxPos - 1].style.display = 'flex';
+dots[boxPos - 1].classList.add('dot-background');
 
 function boxSlider(elemntPos, slideImages, anime1, anime2, anime3, anime4){
 	
@@ -23,6 +25,10 @@ function boxSlider(elemntPos, slideImages, anime1, anime2, anime3, anime4){
 
 	}
 	
+	for(i = 0; i < dots.length; i++){
+		dots[i].classList.remove('dot-background');
+	}
+	
 	elemntPos;
 	
 	if(boxPos > slideImages.length){
@@ -38,6 +44,7 @@ function boxSlider(elemntPos, slideImages, anime1, anime2, anime3, anime4){
 	setTimeout(
 		function(){
 			slideImages[boxPos - 1].style.display = 'flex';
+			dots[boxPos - 1].classList.add('dot-background');
 		}, 
 	450);
 }
@@ -130,6 +137,15 @@ for(i = 0; i < slideBox.length; i++){
 			currentSlide(count = index + 1, modalSlider);
 			document.body.style.overflow = 'hidden';
 			document.documentElement.style.overflow = 'hidden';
+		};
+	})(i);
+}
+
+for(i = 0; i < dots.length; i++){
+	(function(index){
+			dots[i].onclick = function(){
+			boxSlider(boxPos = index + 1, slideBox, 'slideLeft', 'slideOut', 'slideRight', 'slideIn');
+			console.log(index);
 		};
 	})(i);
 }

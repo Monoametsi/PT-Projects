@@ -360,11 +360,33 @@ section{
 .dots-cont{
 	position: absolute;
 	list-style: none;
+	align-self: flex-end;
+	left: 48.5%;
 	display: flex;
+	transform: translate(-50%,100%);
+}
+
+.dots-cont li{
+	width: 1.2rem;
+	height: 1.2rem;
 }
 
 .dots{
+	margin: 3rem 4px;
 	border-radius: 100%;
+	background-color: transparent;
+	border: 1px solid #0fa0dc;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.dots-cont .dot-background{
+	width: 1.35rem;
+	height: 1.35rem;
+}
+
+.dot-background{
+	background-color: #0fa0dc;
 }
 
 .slideShow-cont{
