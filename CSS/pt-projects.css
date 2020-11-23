@@ -61,6 +61,7 @@ section{
 }
 
 .logo-title{
+	display: flex;
 	padding: 12px 18px;
 }
 
@@ -71,6 +72,38 @@ section{
 .comp-logo{
 	height: 100px;
 	cursor: pointer;
+}
+
+.menu-toggle{
+	display: none;
+	list-style: none;
+   	flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 5rem;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.bar{
+	transition: 0.3s;
+    background-color: #fff;
+  	margin: 4px 0;
+    width: 50px;
+    height: 8px;
+    border-radius: 3px;
+}
+
+.change .top-toggle{
+	transform: rotate(-45deg) translate(-0.7rem, 0.7rem);
+}
+
+.change .mid-toggle{
+    opacity: 0;
+}
+
+.change .low-toggle{
+	transform: rotate(45deg) translate(-0.7rem, -0.7rem);
 }
 
 .nav{

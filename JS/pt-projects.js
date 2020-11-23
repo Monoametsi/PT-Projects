@@ -1,5 +1,6 @@
 //menu functions
 let topNav = document.getElementById('topNav');
+let nav = document.getElementById('naver');
 let home = document.getElementById('home');
 let header = document.getElementById('header');
 let aboutUs = document.getElementById('About-Us');
@@ -10,6 +11,24 @@ let projects = document.getElementById('Projects');
 let projectsSect = document.getElementById('project-cont');
 let contactUs = document.getElementById('Contact-Us');
 let contactUsSect = document.getElementById('contactUs-cont');
+
+//menu toggle
+let menuToggle = document.getElementById('menu-toggle');
+
+function navToggle(menu){
+	
+	menu.classList.toggle('change');
+
+	if(nav.style.maxHeight){
+		nav.style.maxHeight = null;
+	}else{
+		nav.style.maxHeight = nav.scrollHeight + 'px';
+	}
+}
+
+menuToggle.onclick = function(){
+	navToggle(this);
+}
 
 window.onscroll = function(){
 	let htmlDocScroll = document.documentElement.scrollTop;

@@ -37,10 +37,6 @@ function boxSlider(elemntPos, slideImages, anime1, anime2, anime3, anime4){
 		boxPos = slideImages.length;
 	}
 	
-	let fullImageAmount = slideImages.length;
-	
-	imgNumTracker.innerHTML = `${boxPos}/${fullImageAmount}`;
-	
 	setTimeout(
 		function(){
 			slideImages[boxPos - 1].style.display = 'flex';
