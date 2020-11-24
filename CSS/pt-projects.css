@@ -229,6 +229,7 @@ section{
 
 .aboutUsMission-statement,.service-list{
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-around;
 	align-items: center;
 	margin: 0 2.5rem;
@@ -241,6 +242,7 @@ section{
 
 .missionStatement-box, .service-box, .project-box{
 	display: flex;
+	width: 22rem;
 	transition: 0.3s;
 	cursor: default;
 	margin: 0 2rem;
@@ -248,8 +250,8 @@ section{
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	/*background-color: #fff;*/
-	/*box-shadow: 6px 4px 8px rgba(0,0,0,0.2), -4px -2px 8px rgba(0,0,0,0.2), -2px -1px 8px rgba(0,0,0,0.2);*/
+	background-color: #fff;
+	box-shadow: 6px 4px 8px rgba(0,0,0,0.2), -4px -2px 8px rgba(0,0,0,0.2), -2px -1px 8px rgba(0,0,0,0.2);*/
 }
 
 .project-slideshow{

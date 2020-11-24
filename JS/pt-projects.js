@@ -12,6 +12,10 @@ let projectsSect = document.getElementById('project-cont');
 let contactUs = document.getElementById('Contact-Us');
 let contactUsSect = document.getElementById('contactUs-cont');
 
+let span = document.getElementById('span');
+
+window.onresize = function(){span.innerHTML = window.innerWidth};
+
 //menu toggle
 let menuToggle = document.getElementById('menu-toggle');
 
