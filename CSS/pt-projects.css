@@ -20,6 +20,10 @@ section{
 	margin-bottom: 4rem;
 }
 
+#contactUs-cont{
+	margin-top: 6rem;
+}
+
 #header{
 	display: flex;
 	overflow: hidden;
@@ -206,6 +210,8 @@ section{
 	margin-top: -2rem;
 	font-size: 1.2rem;
 	align-self: center;
+	text-align: center;
+	padding: 0 1.5rem;
 }
 
 .aboutInfo-cont{
@@ -250,13 +256,13 @@ section{
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	background-color: #fff;
+	/*background-color: #fff;
 	box-shadow: 6px 4px 8px rgba(0,0,0,0.2), -4px -2px 8px rgba(0,0,0,0.2), -2px -1px 8px rgba(0,0,0,0.2);*/
 }
 
 .project-slideshow{
 	margin-top: 2rem;
-	height: 40rem;
+	height: 35rem;
 }
 
 .project-box{
@@ -301,10 +307,11 @@ section{
 }
 
 .project-description p{
-	text-align: center;
-	margin: 0 10px;
-	margin-bottom: 1.5rem;
-	line-height: 1.9rem;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .serviceBox-image img{
@@ -382,6 +389,12 @@ section{
 }
 
 .projectModal-box >  .project-description p{
+	text-align: center;
+	display: inherit;
+	-webkit-line-clamp: none;
+	-webkit-box-orient: initial;
+	text-overflow: initial;
+	overflow: visible;
 	margin: 0;
 	margin-bottom: 0;
 }
@@ -407,7 +420,7 @@ section{
 }
 
 .dots{
-	margin: 3rem 4px;
+	margin: 1.9rem 4px;
 	border-radius: 100%;
 	background-color: transparent;
 	border: 1px solid #0fa0dc;
@@ -437,7 +450,8 @@ section{
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	width: 550px;
+	max-width: 515px;
+	height: 565px;
 	margin: 1.5rem 0;
 }
 
@@ -552,6 +566,7 @@ section{
 	justify-content: space-around;
 	margin: 2rem;
 	margin-top: 3.5rem;
+	margin-bottom: 7rem;
 }
 
 .contactForm-cont{
@@ -686,6 +701,7 @@ input[type=submit]:hover{
 }
 
 .contactBox-description p{
+	text-align: center;
 	font-size: 1.1rem;
 }
 
@@ -731,7 +747,15 @@ input[type=submit]:hover{
 	color: #0fa0dc;
 }
 
+.mobile-cont{
+	display: none;
+	flex-direction: column;
+}
+
 .footer-title h1{
+	text-align: center;
+	line-height: 1.9rem;
+	padding: 0 1rem;
 	font-size: 1.2rem;
 	color: #fff;
 	font-family: montserrat, sans-serif;

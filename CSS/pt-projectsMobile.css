@@ -17,6 +17,46 @@
 	}
 }
 
+@media screen and (max-width: 1100px){
+	.contactDetails-box{
+		padding: 12px 8px;
+		width: 45%;
+	}
+	
+	.contactForm-cont{
+		width: 60%;
+		margin-right: -2rem;
+	}
+}
+
+@media screen and (max-width: 1000px){
+	.contactUs-info{
+		flex-direction: column;
+		justify-content: stretch;
+	}
+	
+	.contact-details{
+		margin-bottom: 2rem;
+		margin-right: 0;
+	}
+	
+	.contactDetails-box{
+		width: 50%;
+	}
+	
+	.contactForm-cont{
+		order: 2;
+		width: 100%;
+		margin-top: 1.5rem;
+		margin-right: 0;
+		margin-left: 0;
+	}
+	
+	.contactTitle-cont{
+		margin-top: 8rem;
+	}
+}
+
 @media screen and (max-width: 980px){
 	.topNav{
 		justify-content: stretch;
@@ -36,10 +76,231 @@
 	.menu-toggle{
 		display: flex;
 	}
+}
+
+@media screen and (max-width: 950px){
+	.missionStatement-box, .service-box{
+		margin: 1rem 1.5rem;
+		width: 22rem;
+	}
+}
+
+@media screen and (max-width: 915px){
+	.missionStatement-box, .service-box{
+		margin: 1rem 1rem;
+		width: 22rem;
+	}
 	
-	.fullLine{
-		transition: 0.3s;
-		opacity: 1;
+	@keyframes smooth-Left{
+		0%{opacity: 0.3; transform: translate(0, 0);}
+		100%{opacity: 0; transform: translate(-10rem, 0);}
+	}
+
+	@keyframes slideOut-right{
+		0%{opacity: 0.3; transform: translate(0, 0);}
+		100%{opacity: 0; transform: translate(10rem, 0);}
+	}
+
+	@keyframes slide-Out{
+		0%{opacity: 0; transform: translate(10rem, 0);}
+		75%{opacity: 0.7;}
+		100%{opacity: 1; transform: translate(0, 0);}
+	}
+
+	@keyframes slide-in{
+		0%{opacity: 0; transform: translate(-10rem, 0);}
+		75%{opacity: 0.7;}
+		100%{opacity: 1; transform: translate(0, 0);}
+	}
+}
+
+@media screen and (max-width: 870px){
+	.missionStatement-box, .service-box{
+		margin: 2rem 2rem;
 		width: 100%;
+	}
+
+	.project-box{
+		width: 400px;
+	}
+	
+	.projectModal-box{
+		max-width: 450px;
+		height: 550px;
+	}
+	
+	.projectModal-box > .project-image img{
+		height: 300px;
+	}
+
+	@keyframes smooth-Left{
+		0%{opacity: 0.3; transform: translate(0, 0);}
+		100%{opacity: 0; transform: translate(-8rem, 0);}
+	}
+
+	@keyframes slideOut-right{
+		0%{opacity: 0.3; transform: translate(0, 0);}
+		100%{opacity: 0; transform: translate(8rem, 0);}
+	}
+
+	@keyframes slide-Out{
+		0%{opacity: 0; transform: translate(8rem, 0);}
+		75%{opacity: 0.7;}
+		100%{opacity: 1; transform: translate(0, 0);}
+	}
+
+	@keyframes slide-in{
+		0%{opacity: 0; transform: translate(-8rem, 0);}
+		75%{opacity: 0.7;}
+		100%{opacity: 1; transform: translate(0, 0);}
+	}
+	
+	.footer > .social-cont, .footer > .footer-title{
+		display: none;
+	}
+	
+	.footer{
+		justify-content: space-around;
+	}
+	
+	.mobile-cont{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.social-links{
+		padding: 0 0;
+		margin: 0 5px;
+	}
+	
+	.social-cont{
+		margin-left: -3rem;
+	}
+}
+
+@media screen and (max-width: 788px){
+	.fa-camera, .track-num, .close-btn{
+		font-size: 1.5rem;
+	}
+	
+	.modalSlideShow-tracker{
+		top: 1.5rem;
+		left: 2rem;
+	}
+}
+
+@media screen and (max-width: 700px){
+	.fa-camera, .track-num, .close-btn{
+		font-size: 1.5rem;
+	}
+	
+	.modalSlideShow-tracker{
+		top: 1.5rem;
+		left: 2rem;
+	}
+	
+	.projectModal-box{
+		max-width: 450px;
+		height: 650px;
+		margin: 1.5rem 0;
+	}
+}
+
+@media screen and (max-width: 685px){
+	.contactDetails-box{
+		width: 100%;
+	}
+	
+	.contactForm-cont{
+		width: 100%;
+	}
+	
+	.company-title{
+		padding: 2rem;
+	}
+	
+	.projectBox-modal > .arrow{
+		font-size: 6rem;
+		padding: 0 2rem;
+	}
+	
+	.projectModal-box{
+		max-width: 450px;
+		height: 650px;
+		margin: 1.5rem 0;
+	}
+	
+	.projectModal-box > .project-title h1 {
+		padding: 0;
+	}
+	
+	@keyframes smooth-in{
+		0%{opacity: 0; transform: translate(-100rem, 0);}
+		50%{opacity: 0.4;}
+		75%{opacity: 0.7; transform: translate(2rem, 0);}
+		100%{opacity: 1; transform: translate(0, 0);}
+	}
+	
+	.project-box{
+		width: 100%;
+		margin: 0 0;
+		max-width: 360px;
+	}
+	
+	.dots{
+		margin: 3rem 4px;
+	}
+	
+	.project-title h1{
+		padding: 10px;
+	}
+
+	@keyframes smooth-Left{
+		0%{opacity: 0.3; transform: translate(0, 0);}
+		100%{opacity: 0; transform: translate(-2rem, 0);}
+	}
+
+	@keyframes slideOut-right{
+		0%{opacity: 0.3; transform: translate(0, 0);}
+		100%{opacity: 0; transform: translate(2rem, 0);}
+	}
+
+	@keyframes slide-Out{
+		0%{opacity: 0; transform: translate(15rem, 0);}
+		75%{opacity: 0.7;}
+		0%{opacity: 0; transform: translate(2rem, 0);}
+	}
+
+	@keyframes slide-in{
+		0%{opacity: 0; transform: translate(-2rem, 0);}
+		75%{opacity: 0.7;}
+		100%{opacity: 1; transform: translate(0, 0);}
+	}
+	
+	.arrow{
+		padding: 0 1rem;
+		font-size: 4.5rem;
+	}
+}
+
+@media screen and (max-width: 645px){
+	.projectModal-box{
+		height: 750px;
+	}
+	
+	.modalSlideShow-tracker{
+		top: 1rem;
+		left: 1rem;
+	}
+	
+	.projectBox-modal > .arrow{
+		font-size: 4rem;
+		padding: 0 1rem;
+	}
+	
+	.modal-closer{
+		top: 1rem;
+		right: 2rem;
 	}
 }

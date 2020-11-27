@@ -12,9 +12,21 @@ let projectsSect = document.getElementById('project-cont');
 let contactUs = document.getElementById('Contact-Us');
 let contactUsSect = document.getElementById('contactUs-cont');
 
-let span = document.getElementById('span');
+/*let scrollDown = window.pageYOffset;
 
-window.onresize = function(){span.innerHTML = window.innerWidth};
+function sap(){
+	
+	let scrollUp = window.pageYOffset;
+	if(scrollDown > scrollUp){
+		topNav.style.top = '0';
+	}else{
+		topNav.style.top = '-' + topNav.scrollHeight + 'px';
+	}
+	
+	console.log(scrollDown);
+ 
+	scrollDown = scrollUp;
+}*/
 
 //menu toggle
 let menuToggle = document.getElementById('menu-toggle');
