@@ -14,7 +14,7 @@ let contactUsSect = document.getElementById('contactUs-cont');
 
 /*let scrollDown = window.pageYOffset;
 
-function sap(){
+function navHider(){
 	
 	let scrollUp = window.pageYOffset;
 	if(scrollDown > scrollUp){
@@ -23,8 +23,6 @@ function sap(){
 		topNav.style.top = '-' + topNav.scrollHeight + 'px';
 	}
 	
-	console.log(scrollDown);
- 
 	scrollDown = scrollUp;
 }*/
 
