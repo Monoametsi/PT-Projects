@@ -8,6 +8,7 @@ let count = 1;
 slideBox[boxPos - 1].style.display = 'flex';
 dots[boxPos - 1].classList.add('dot-background');
 
+//original slider
 function boxSlider(elemntPos, slideImages, anime1, anime2, anime3, anime4){
 	
 	for(i = 0; i < slideImages.length; i++){
@@ -46,7 +47,6 @@ function boxSlider(elemntPos, slideImages, anime1, anime2, anime3, anime4){
 }
 
 //modal slider
-
 function modalSlideShow(elemntPos, slideImages, anime1, anime2, anime3, anime4){
 	
 	for(i = 0; i < slideImages.length; i++){
@@ -92,7 +92,6 @@ rightArrow.onclick = function(){
 }
 
 //Modal system
-
 let modal = document.getElementById('projectBox-modal');
 let modalSlider = document.getElementsByClassName('projectModal-box');
 let modalCloser = document.getElementById('close-btn');
@@ -101,7 +100,6 @@ let modalRightArrow = document.getElementById('modal-right');
 let imgNumTracker = document.getElementById('track-num');
 
 //current slider function
-
 function currentSlide(elemntPos, slideImages){
 	
 	for(i = 0; i < slideImages.length; i++){
@@ -141,12 +139,11 @@ for(i = 0; i < dots.length; i++){
 	(function(index){
 			dots[i].onclick = function(){
 			boxSlider(boxPos = index + 1, slideBox, 'slideLeft', 'slideOut', 'slideRight', 'slideIn');
-			console.log(index);
 		};
 	})(i);
 }
 
-modalCloser.onclick = function(){
+function modalRemover(){
 	modal.classList.add('smooth-out');
 	setTimeout(
 		function(){
@@ -157,16 +154,13 @@ modalCloser.onclick = function(){
 	300);
 }
 
+modalCloser.onclick = function(){
+	modalRemover();
+}
+
 window.onclick = function(){
 	if(event.target === modal){
-	modal.classList.add('smooth-out');
-	setTimeout(
-		function(){
-			modal.style.display = 'none';
-			document.body.style.overflow = 'auto';
-			document.documentElement.style.overflow = 'auto';
-		},
-	300);
+		modalRemover();
 	}
 }
 
