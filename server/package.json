@@ -1,0 +1,23 @@
+{
+  "name": "PT-Projects",
+  "version": "1.0.0",
+  "description": "PT-Projects construction website",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Monoametsi/PT-Projects.git"
+  },
+  "keywords": [],
+  "author": "Junior Mosemeng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Monoametsi/PT-Projects/issues"
+  },
+  "homepage": "https://github.com/Monoametsi/PT-Projects#readme",
+  "dependencies": {
+    "nodemailer": "^6.4.16"
+  }
+}
