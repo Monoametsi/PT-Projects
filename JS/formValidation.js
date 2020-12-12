@@ -78,7 +78,6 @@ function msgValidation(){
 }
 
 subBtn.onclick = function(){
-	event.preventDefault();
 
 	nameValidation();
 	msgValidation();
