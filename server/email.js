@@ -13,7 +13,7 @@ const mailDeliverer = (name,email,message) => {
 		from: email,
 		to: '216026633@student.uj.ac.za',
 		subject: 'Form submission',
-		html: `User Name: ${name} <br><br> User Messgae: ${message}`
+		html: `User Name: ${name} <br><br> User Email: ${email} <br><br> User Messgae: ${message}`
 	};
 
 	transporter.sendMail(mailOptions, (err, content) => {
@@ -25,4 +25,4 @@ const mailDeliverer = (name,email,message) => {
 	});
 }
 
-module.exports = mailDeliverer;
+module.exports = {mailDeliverer};

@@ -32,16 +32,18 @@ emailField.oninput = function(){
 function emailValidation(){
 	let emailFieldVal = emailField.value;
 	let emailErr = document.getElementById('errorEmail-message');
-	let emailRegEx = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,3}(?:\.[A-Za-z]{2})*(?:\.[A-Za-z]{2}\.[A-Za-z]{2})*$/;
-	let regExTest = emailRegEx.test(emailFieldVal);
-	
+	let emailOneDot = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,3}$/;
+	let emailTwoDots = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2}\.[A-Za-z]{2}$/;
+	let emailThreeDots = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,15}\.[A-Za-z]{2}\.[A-Za-z]{2}$/;
+	let emailRegEx = emailOneDot.test(emailFieldVal) || emailTwoDots.test(emailFieldVal) || emailThreeDots.test(emailFieldVal);
+
 	if(emailFieldVal === ''){
 		emailErr.style.display = 'flex';
 		emailErr.innerHTML = 'Required';
 		emailField.classList.add('error');
 		return false;
 
-	}else if(regExTest === false){
+	}else if(emailRegEx === false){
 		emailErr.style.display = 'flex';
 		emailErr.innerHTML = 'Invalid';
 		emailField.classList.add('error');
