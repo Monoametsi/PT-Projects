@@ -38,6 +38,7 @@ const server = http.createServer((req,res) => {
 
 	fs.readFile(filePath, (err, content) => {
 		if(err){
+			console.log(err);
 			if(err.code == 'ENOENT'){
 				res.writeHead(404,{'Content-type': 'text/html'});
 				res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 4rem;">404 Not Found</h1>');
@@ -55,7 +56,7 @@ const server = http.createServer((req,res) => {
 		if(req.method === 'POST'){
 			let body = '';
 			let formData;
-			
+
 			req.on('data', (chunk) => {
 				body += chunk;
 				if(body.length > 1e6){
@@ -64,15 +65,41 @@ const server = http.createServer((req,res) => {
 				}
 			});
 			
+			function success(){
+				res.writeHead(200, {'Content-type': contentType});
+				res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 4rem;">Email successfully sent!!!</h1>');
+			}
+			
+			function failure(){
+				res.writeHead(200, {'Content-type': contentType});;
+				res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 4rem;">Sorry Email failed to send, please try again!!!</h1>');
+			}
+
 			req.on('end', () => {
 				formData = parse(body);
 				let {name, email, message} = formData;
-				mailDeliverer(name, email, message);
+				let emailOneDot = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,3}$/;
+				let emailTwoDots = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2}\.[A-Za-z]{2}$/;
+				let emailThreeDots = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,15}\.[A-Za-z]{2}\.[A-Za-z]{2}$/;
+				let emailRegEx = emailOneDot.test(email) || emailTwoDots.test(email) || emailThreeDots.test(email);
+				
+				if(name == '' || message == ''|| email == ''){
+					res.writeHead(200, {'Content-type': contentType});
+					res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 4rem;">Its is a required that all fields be filled in.</h1>');
+				}else if(emailRegEx === false){
+					res.writeHead(200, {'Content-type': contentType});
+					res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 4rem;">Invalid email</h1>');
+				}else{
+					mailDeliverer(name, email, message, (err, data) => {
+						if(err){
+							failure();
+						}else{
+							success();
+						}
+					});
+				}
 			});
 
-		}else{
-			res.writeHead(200, {'Content-type': contentType});
-			res.end('utf8');
 		}
 	}
 

@@ -8,7 +8,7 @@ let transporter = nodeMailer.createTransport({
 	}
 });
 
-const mailDeliverer = (name,email,message) => {
+const mailDeliverer = (name,email,message, cb) => {
 	let mailOptions = {
 		from: email,
 		to: '216026633@student.uj.ac.za',
@@ -18,9 +18,11 @@ const mailDeliverer = (name,email,message) => {
 
 	transporter.sendMail(mailOptions, (err, content) => {
 		if(err){
-			console.log(err);
+			console.log('no');
+			cb(err, null);
 		}else{
-			console.log('Email sent to :' + content.response);
+			console.log('yes');
+			cb(null, data);
 		}
 	});
 }
