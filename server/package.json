@@ -4,7 +4,8 @@
   "description": "PT-Projects construction website",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server",
+    "dev": "nodemon server"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,8 @@
   "homepage": "https://github.com/Monoametsi/PT-Projects#readme",
   "dependencies": {
     "nodemailer": "^6.4.16"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
   }
 }

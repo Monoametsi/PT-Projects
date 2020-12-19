@@ -8,7 +8,9 @@ let transporter = nodeMailer.createTransport({
 	}
 });
 
-const mailDeliverer = (name,email,message, cb) => {
+const mailDeliverer = (name, email, message, emailSent, emailNotSent) => {
+	var success = true;
+
 	let mailOptions = {
 		from: email,
 		to: '216026633@student.uj.ac.za',
@@ -19,12 +21,17 @@ const mailDeliverer = (name,email,message, cb) => {
 	transporter.sendMail(mailOptions, (err, content) => {
 		if(err){
 			console.log('no');
-			cb(err, null);
+			success = false;
 		}else{
 			console.log('yes');
-			cb(null, data);
 		}
 	});
+
+	if(success){
+		emailSent;
+	}else{
+		emailNotSent;
+	}
 }
 
 module.exports = {mailDeliverer};

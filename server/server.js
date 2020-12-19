@@ -12,6 +12,7 @@ let dirname = __dirname.slice(0, __dirname.search('SERVER') - 1);
 const server = http.createServer((req,res) => {
 	let filePath = path.join(dirname, req.url === '/' ?  HTML : req.url);
 	let filePath2 = path.join(dirname, req.url === '/email' ?  four : req.url);
+	let jsonFilePath = path.join(__dirname, 'emailMessage.json');
 	let notFoundFile = path.join(dirname);
 
 	let extName = path.extname(filePath);
@@ -52,7 +53,7 @@ const server = http.createServer((req,res) => {
 		}
 	});
 
-	if(req.url === '/email'){
+	if(req.url === '/contact-us'){
 		if(req.method === 'POST'){
 			let body = '';
 			let formData;
@@ -67,12 +68,12 @@ const server = http.createServer((req,res) => {
 			
 			function success(){
 				res.writeHead(200, {'Content-type': contentType});
-				res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 4rem;">Email successfully sent!!!</h1>');
+				res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 2rem;">success!!!</h1>');
 			}
-			
+
 			function failure(){
 				res.writeHead(200, {'Content-type': contentType});;
-				res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 4rem;">Sorry Email failed to send, please try again!!!</h1>');
+				res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 2rem;">Sorry form information failed to send, please try again!!!</h1>');
 			}
 
 			req.on('end', () => {
@@ -85,18 +86,12 @@ const server = http.createServer((req,res) => {
 				
 				if(name == '' || message == ''|| email == ''){
 					res.writeHead(200, {'Content-type': contentType});
-					res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 4rem;">Its is a required that all fields be filled in.</h1>');
+					res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 2rem;">Its is a required that all fields be filled in.</h1>');
 				}else if(emailRegEx === false){
 					res.writeHead(200, {'Content-type': contentType});
-					res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 4rem;">Invalid email</h1>');
+					res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 2rem;">Invalid email</h1>');
 				}else{
-					mailDeliverer(name, email, message, (err, data) => {
-						if(err){
-							failure();
-						}else{
-							success();
-						}
-					});
+					mailDeliverer(name, email, message, success(), failure());
 				}
 			});
 
