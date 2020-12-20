@@ -4,17 +4,17 @@ const path = require('path');
 const { parse } = require('querystring');
 const {mailDeliverer} = require('./email');
 
-let HTML = '\\' + 'HTML' + '\\' + 'index.html';
-let four = '\\' + 'HTML' + '\\' + '404.html';
-
-let dirname = __dirname.slice(0, __dirname.search('SERVER') - 1);
-
 const server = http.createServer((req,res) => {
-	let filePath = path.join(dirname, req.url === '/' ?  HTML : req.url);
-	let filePath2 = path.join(dirname, req.url === '/email' ?  four : req.url);
-	let jsonFilePath = path.join(__dirname, 'emailMessage.json');
-	let notFoundFile = path.join(dirname);
+	let HTML = 'HTML' + '\\' + 'index.html';
+	let successPath = 'contact-us' + '\\' + 'success.html';
+	let failurePath = 'contact-us' + '\\' + 'failure.html';
 
+	let dirname = __dirname.slice(0, __dirname.search('SERVER') - 1);
+	
+	let filePath = path.join(dirname, req.url === '/' ?  HTML : req.url);
+	let filePathSuccess = path.join(dirname, req.url === '/contact-us' ?  successPath : req.url);
+	let filePathFailure = path.join(dirname, req.url === '/contact-us' ?  failurePath : req.url);
+	let notFoundFile = path.join(__dirname);
 	let extName = path.extname(filePath);
 
 	let contentType = 'text/html';
@@ -45,7 +45,7 @@ const server = http.createServer((req,res) => {
 				res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 4rem;">404 Not Found</h1>');
 			}else{
 				res.writeHead(500);
-				res.end(`Server error: ${err.code}`);
+				res.end(`<h1 style="text-align: center; margin-top: 40vh; font-size: 4rem;">Server error: ${err.code}</h1>`);
 			}
 		}else{
 			res.writeHead(200, {'Content-type': contentType});
@@ -53,7 +53,8 @@ const server = http.createServer((req,res) => {
 		}
 	});
 
-	if(req.url === '/contact-us'){
+	//if(req.url === '/contact-us'){
+		//console.log(req.url);
 		if(req.method === 'POST'){
 			let body = '';
 			let formData;
@@ -65,15 +66,43 @@ const server = http.createServer((req,res) => {
 					console.log('Connection destroyed');
 				}
 			});
-			
+
 			function success(){
-				res.writeHead(200, {'Content-type': contentType});
-				res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 2rem;">success!!!</h1>');
+				fs.readFile(filePathSuccess, (err, content) => {
+					if(err){
+						console.log(err);
+						if(err.code == 'ENOENT'){
+							res.writeHead(404,{'Content-type': 'text/html'});
+							res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 4rem;">404 Not Found</h1>');
+						}else{
+							res.writeHead(500);
+							res.end(`Server error: ${err.code}`);
+						}
+					}else{
+						console.log(req.url);
+						res.writeHead(200, {'Content-type': contentType});
+						res.end(content, 'utf8');
+					}
+				})
 			}
 
 			function failure(){
-				res.writeHead(200, {'Content-type': contentType});;
-				res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 2rem;">Sorry form information failed to send, please try again!!!</h1>');
+				fs.readFile(filePathFailure, (err, content) => {
+					if(err){
+						console.log(err);
+						if(err.code == 'ENOENT'){
+							res.writeHead(404,{'Content-type': 'text/html'});
+							res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 4rem;">404 Not Found</h1>');
+						}else{
+							res.writeHead(500);
+							res.end(`Server error: ${err.code}`);
+						}
+					}else{
+						console.log(filePathFailure);
+						res.writeHead(200, {'Content-type': contentType});;
+						res.end(content, 'utf8');
+					}
+				});
 			}
 
 			req.on('end', () => {
@@ -96,7 +125,7 @@ const server = http.createServer((req,res) => {
 			});
 
 		}
-	}
+	//}
 
 });
 

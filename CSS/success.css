@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i%20|%20Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%20|%20Hind:300,400,500,600,700');
+
+*{
+	box-sizing: border-box;
+}
+
+body{
+	margin: 0;
+	padding: 0;
+	font-family: "Poppins",sans-serif;
+	background-color: #eee7;`
+}
+
+a{
+	text-decoration: none;
+}
+
+.successBox-cont{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
+.success-box{
+	text-align: center;
+	width: 550px;
+	flex-direction: column;
+	border-radius: 5px;
+	background-color: #fff;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+	padding: 2rem;
+}
+
+.fa-check{
+	font-size: 4.5rem;
+	color: 	#7FFF00;
+}
+
+.fa-check:before{
+	animation-name: glow;
+	animation-duration: 1.8s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes glow{
+	0%, 100%{text-shadow: 0 0 0 rgb(127, 255, 0);}
+	50%{text-shadow: 0 0 4px rgb(127, 255, 0);}
+	75%{text-shadow: 0 0 6px rgb(127, 255, 0);}
+	95%{text-shadow: 0 0 2px rgb(127, 255, 0);}
+}
+
+.successTitle{
+	margin-top: 0;
+	font-size: 2rem;
+	color: 	#7FFF00;
+	font-family: montserrat, sans-serif;
+}
+
+.successMessage{
+	font-size: 1.1rem;
+}
+
+.successBoxRedirect-cont{
+	margin-top: 2rem;
+}
+
+.successBoxRedirect-cont a{
+	text-decoration: none;
+}
+
+.successBoxRedirect{
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	white-space: nowrap;
+	padding: 8px 12px;
+	background-color: rgb(91, 172, 222);
+	cursor: pointer;
+	transition: 0.3s;
+	color: #fff;
+	font-size: 1rem;
+	font-family: "Poppins",sans-serif;
+}
+
+.successBoxRedirect:hover{
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+	background-color: rgb(80, 160, 280);
+	color: #000;
+}
