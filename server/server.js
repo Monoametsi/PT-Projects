@@ -10,7 +10,6 @@ const server = http.createServer((req,res) => {
 	let failurePath = 'contact-us' + '\\' + 'failure.html';
 
 	let dirname = __dirname.slice(0, __dirname.search('SERVER') - 1);
-
 	let filePath = path.join(dirname, req.url === '/' ?  HTML : req.url);
 	let filePathSuccess = path.join(dirname, req.url === '/contact-us' ?  successPath : req.url);
 	let filePathFailure = path.join(dirname, req.url === '/contact-us' ?  failurePath : req.url);
@@ -38,6 +37,7 @@ const server = http.createServer((req,res) => {
 			break;
 	}
 
+	if(req.url !== '/contact-us'){
 	fs.readFile(filePath, (err, content) => {
 		if(err){
 			console.log(err);
@@ -49,13 +49,12 @@ const server = http.createServer((req,res) => {
 				res.end(`<h1 style="text-align: center; margin-top: 40vh; font-size: 4rem;">Server error: ${err.code}</h1>`);
 			}
 		}else{
-			console.log(req.url);
+			//console.log(req.url);
 			res.writeHead(200, {'Content-type': contentType});
 			res.end(content, 'utf8');
 		}
 	});
-
-	if(req.url === '/contact-us'){
+	}else if(req.url === '/contact-us'){
 		//console.log(req.url);
 		if(req.method === 'POST'){
 			let body = '';
@@ -71,7 +70,7 @@ const server = http.createServer((req,res) => {
 
 			function success(){
 				fs.readFile(filePathSuccess, (err, content) => {
-					console.log(req.url);
+					//console.log(req.url);
 					if(err){
 						if(err.code == 'ENOENT'){
 							res.writeHead(404,{'Content-type': 'text/html'});
