@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/Monoametsi/PT-Projects#readme",
   "dependencies": {
-    "nodemailer": "^6.4.16"
+    "nodemailer": "^6.4.16",
+    "read-multiple-files": "^3.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"

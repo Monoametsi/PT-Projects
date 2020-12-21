@@ -10,11 +10,12 @@ const server = http.createServer((req,res) => {
 	let failurePath = 'contact-us' + '\\' + 'failure.html';
 
 	let dirname = __dirname.slice(0, __dirname.search('SERVER') - 1);
-	
+
 	let filePath = path.join(dirname, req.url === '/' ?  HTML : req.url);
 	let filePathSuccess = path.join(dirname, req.url === '/contact-us' ?  successPath : req.url);
 	let filePathFailure = path.join(dirname, req.url === '/contact-us' ?  failurePath : req.url);
 	let notFoundFile = path.join(__dirname);
+
 	let extName = path.extname(filePath);
 
 	let contentType = 'text/html';
@@ -48,12 +49,13 @@ const server = http.createServer((req,res) => {
 				res.end(`<h1 style="text-align: center; margin-top: 40vh; font-size: 4rem;">Server error: ${err.code}</h1>`);
 			}
 		}else{
+			console.log(req.url);
 			res.writeHead(200, {'Content-type': contentType});
 			res.end(content, 'utf8');
 		}
 	});
 
-	//if(req.url === '/contact-us'){
+	if(req.url === '/contact-us'){
 		//console.log(req.url);
 		if(req.method === 'POST'){
 			let body = '';
@@ -69,8 +71,8 @@ const server = http.createServer((req,res) => {
 
 			function success(){
 				fs.readFile(filePathSuccess, (err, content) => {
+					console.log(req.url);
 					if(err){
-						console.log(err);
 						if(err.code == 'ENOENT'){
 							res.writeHead(404,{'Content-type': 'text/html'});
 							res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 4rem;">404 Not Found</h1>');
@@ -79,7 +81,7 @@ const server = http.createServer((req,res) => {
 							res.end(`Server error: ${err.code}`);
 						}
 					}else{
-						console.log(req.url);
+						//console.log(filePathSuccess);
 						res.writeHead(200, {'Content-type': contentType});
 						res.end(content, 'utf8');
 					}
@@ -98,7 +100,7 @@ const server = http.createServer((req,res) => {
 							res.end(`Server error: ${err.code}`);
 						}
 					}else{
-						console.log(filePathFailure);
+						//console.log(filePathFailure);
 						res.writeHead(200, {'Content-type': contentType});;
 						res.end(content, 'utf8');
 					}
@@ -112,7 +114,7 @@ const server = http.createServer((req,res) => {
 				let emailTwoDots = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2}\.[A-Za-z]{2}$/;
 				let emailThreeDots = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,15}\.[A-Za-z]{2}\.[A-Za-z]{2}$/;
 				let emailRegEx = emailOneDot.test(email) || emailTwoDots.test(email) || emailThreeDots.test(email);
-				
+
 				if(name == '' || message == ''|| email == ''){
 					res.writeHead(200, {'Content-type': contentType});
 					res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 2rem;">Its is a required that all fields be filled in.</h1>');
@@ -120,12 +122,12 @@ const server = http.createServer((req,res) => {
 					res.writeHead(200, {'Content-type': contentType});
 					res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 2rem;">Invalid email</h1>');
 				}else{
-					mailDeliverer(name, email, message, success(), failure());
+					mailDeliverer(name, email, message, success, failure);
 				}
 			});
 
 		}
-	//}
+	}
 
 });
 

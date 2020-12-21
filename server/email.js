@@ -8,8 +8,9 @@ let transporter = nodeMailer.createTransport({
 	}
 });
 
+let success = true;
+
 const mailDeliverer = (name, email, message, emailSent, emailNotSent) => {
-	var success = true;
 
 	let mailOptions = {
 		from: email,
@@ -20,17 +21,23 @@ const mailDeliverer = (name, email, message, emailSent, emailNotSent) => {
 
 	transporter.sendMail(mailOptions, (err, content) => {
 		if(err){
-			console.log('no');
 			success = false;
+			console.log('no' + '\n' + err);
 		}else{
 			console.log('yes');
 		}
+		
+		transporter.close();
 	});
+	
+	console.log(success);
 
 	if(success){
-		emailSent;
+		console.log('sent');
+		emailSent();
 	}else{
-		emailNotSent;
+		console.log('not sent');
+		emailNotSent();
 	}
 }
 
