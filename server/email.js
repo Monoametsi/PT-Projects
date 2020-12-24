@@ -39,7 +39,7 @@ const mailDeliverer = (name, email, message, emailSent, emailNotSent) => {
 			console.log('not sent');
 			emailNotSent();
 		}
-	}, 6000);
+	}, 7000);
 	
 }
 
