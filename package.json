@@ -4,6 +4,7 @@
   "description": "PT-Projects construction website",
   "main": "server.js",
   "scripts": {
+	"heroku-postbuild": "npm run build"
     "start": "node server",
     "dev": "nodemon server"
   },
