@@ -24,21 +24,23 @@ const mailDeliverer = (name, email, message, emailSent, emailNotSent) => {
 			success = false;
 			console.log('no' + '\n' + err);
 		}else{
+			success = true;
 			console.log('yes');
 		}
-		
+		console.log(success);
 		transporter.close();
 	});
-	
-	console.log(success);
 
-	if(success){
-		console.log('sent');
-		emailSent();
-	}else{
-		console.log('not sent');
-		emailNotSent();
-	}
+	setTimeout(() => {
+		if(success == true){
+			console.log('sent');
+			emailSent();
+		}else if((success == false)){
+			console.log('not sent');
+			emailNotSent();
+		}
+	}, 6000);
+	
 }
 
 module.exports = {mailDeliverer};

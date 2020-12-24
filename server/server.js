@@ -4,16 +4,17 @@ const path = require('path');
 const { parse } = require('querystring');
 const {mailDeliverer} = require('./email');
 
-const server = http.createServer((req,res) => {
+const server = http.createServer((req, res) => {
 	let HTML = 'HTML' + '\\' + 'index.html';
 	let successPath = 'contact-us' + '\\' + 'success.html';
 	let failurePath = 'contact-us' + '\\' + 'failure.html';
+	let notFound = 'HTML' + '\\' + 'notfound.html';
+	let error;
 
 	let dirname = __dirname.slice(0, __dirname.search('SERVER') - 1);
 	let filePath = path.join(dirname, req.url === '/' ?  HTML : req.url);
 	let filePathSuccess = path.join(dirname, req.url === '/contact-us' ?  successPath : req.url);
 	let filePathFailure = path.join(dirname, req.url === '/contact-us' ?  failurePath : req.url);
-	let notFoundFile = path.join(__dirname);
 
 	let extName = path.extname(filePath);
 
@@ -38,22 +39,24 @@ const server = http.createServer((req,res) => {
 	}
 
 	if(req.url !== '/contact-us'){
-	fs.readFile(filePath, (err, content) => {
-		if(err){
-			console.log(err);
-			if(err.code == 'ENOENT'){
-				res.writeHead(404,{'Content-type': 'text/html'});
-				res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 4rem;">404 Not Found</h1>');
+		fs.readFile(filePath, (err, content) => {
+			if(err){
+				//console.log(err);
+				if(err.code == 'ENOENT'){
+					fs.readFile(path.join(dirname, err.code == 'ENOENT' ? notFound : req.url), (err,content) => {
+						res.writeHead(200, {'Content-type': contentType});
+						res.end(content, 'utf8');
+					});
+				}else{
+					res.writeHead(500);
+					res.end(`<h1 style="text-align: center; margin-top: 40vh; font-size: 4rem;">Server error: ${err.code}</h1>`);
+				}
 			}else{
-				res.writeHead(500);
-				res.end(`<h1 style="text-align: center; margin-top: 40vh; font-size: 4rem;">Server error: ${err.code}</h1>`);
+				//console.log(req.url);
+				res.writeHead(200, {'Content-type': contentType});
+				res.end(content, 'utf8');
 			}
-		}else{
-			//console.log(req.url);
-			res.writeHead(200, {'Content-type': contentType});
-			res.end(content, 'utf8');
-		}
-	});
+		});
 	}else if(req.url === '/contact-us'){
 		//console.log(req.url);
 		if(req.method === 'POST'){
