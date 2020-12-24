@@ -9,7 +9,6 @@ const server = http.createServer((req, res) => {
 	let successPath = 'contact-us' + '\\' + 'success.html';
 	let failurePath = 'contact-us' + '\\' + 'failure.html';
 	let notFound = 'HTML' + '\\' + 'notfound.html';
-	let error;
 
 	let dirname = __dirname.slice(0, __dirname.search('SERVER') - 1);
 	let filePath = path.join(dirname, req.url === '/' ?  HTML : req.url);
@@ -76,8 +75,10 @@ const server = http.createServer((req, res) => {
 					//console.log(req.url);
 					if(err){
 						if(err.code == 'ENOENT'){
-							res.writeHead(404,{'Content-type': 'text/html'});
-							res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 4rem;">404 Not Found</h1>');
+							fs.readFile(path.join(dirname, err.code == 'ENOENT' ? notFound : req.url), (err,content) => {
+								res.writeHead(200, {'Content-type': contentType});
+								res.end(content, 'utf8');
+							});
 						}else{
 							res.writeHead(500);
 							res.end(`Server error: ${err.code}`);
@@ -95,8 +96,10 @@ const server = http.createServer((req, res) => {
 					if(err){
 						console.log(err);
 						if(err.code == 'ENOENT'){
-							res.writeHead(404,{'Content-type': 'text/html'});
-							res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 4rem;">404 Not Found</h1>');
+							fs.readFile(path.join(dirname, err.code == 'ENOENT' ? notFound : req.url), (err,content) => {
+								res.writeHead(200, {'Content-type': contentType});
+								res.end(content, 'utf8');
+							});
 						}else{
 							res.writeHead(500);
 							res.end(`Server error: ${err.code}`);
