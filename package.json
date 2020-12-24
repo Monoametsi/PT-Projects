@@ -2,7 +2,7 @@
   "name": "pt-projects",
   "version": "1.0.0",
   "description": "PT-Projects construction website",
-  "main": "server.js",
+  "main": "SERVER/server.js",
   "scripts": {
     "start": "node server",
     "dev": "nodemon server"
