@@ -4,8 +4,8 @@
   "description": "PT-Projects construction website",
   "main": "server.js",
   "scripts": {
-    "start": "node SERVER/server",
-    "dev": "nodemon SERVER/server"
+    "start": "node server",
+    "dev": "nodemon server"
   },
   "repository": {
     "type": "git",
