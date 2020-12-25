@@ -14,7 +14,7 @@ const server = http.createServer((req, res) => {
 	let filePath = path.join(dirname, req.url === '/' ?  HTML : req.url);
 	let filePathSuccess = path.join(dirname, req.url === '/contact-us' ?  successPath : req.url);
 	let filePathFailure = path.join(dirname, req.url === '/contact-us' ?  failurePath : req.url);
-	console.log(dirname);
+
 	let extName = path.extname(filePath);
 
 	let contentType = 'text/html';
@@ -40,9 +40,9 @@ const server = http.createServer((req, res) => {
 	if(req.url !== '/contact-us'){
 		fs.readFile(filePath, (err, content) => {
 			if(err){
-				//console.log(err);
 				if(err.code == 'ENOENT'){
 					fs.readFile(path.join(dirname, err.code == 'ENOENT' ? notFound : req.url), (err,content) => {
+						console.log(req.url);
 						res.writeHead(200, {'Content-type': contentType});
 						res.end(content, 'utf8');
 					});
@@ -51,13 +51,11 @@ const server = http.createServer((req, res) => {
 					res.end(`<h1 style="text-align: center; margin-top: 40vh; font-size: 4rem;">Server error: ${err.code}</h1>`);
 				}
 			}else{
-				//console.log(req.url);
 				res.writeHead(200, {'Content-type': contentType});
 				res.end(content, 'utf8');
 			}
 		});
 	}else if(req.url === '/contact-us'){
-		//console.log(req.url);
 		if(req.method === 'POST'){
 			let body = '';
 			let formData;
@@ -72,7 +70,6 @@ const server = http.createServer((req, res) => {
 
 			function success(){
 				fs.readFile(filePathSuccess, (err, content) => {
-					//console.log(req.url);
 					if(err){
 						if(err.code == 'ENOENT'){
 							fs.readFile(path.join(dirname, err.code == 'ENOENT' ? notFound : req.url), (err,content) => {
@@ -84,7 +81,6 @@ const server = http.createServer((req, res) => {
 							res.end(`Server error: ${err.code}`);
 						}
 					}else{
-						//console.log(filePathSuccess);
 						res.writeHead(200, {'Content-type': contentType});
 						res.end(content, 'utf8');
 					}
@@ -105,7 +101,6 @@ const server = http.createServer((req, res) => {
 							res.end(`Server error: ${err.code}`);
 						}
 					}else{
-						//console.log(filePathFailure);
 						res.writeHead(200, {'Content-type': contentType});;
 						res.end(content, 'utf8');
 					}
@@ -130,17 +125,10 @@ const server = http.createServer((req, res) => {
 					mailDeliverer(name, email, message, success, failure);
 				}
 			});
-
 		}
 	}
-
 });
 
 const port = process.env.PORT || 8000;
 
 server.listen(port, () => {console.log(port)});
-
-/*
-	res.writeHead(301,{'Location': 'http://localhost:8000/'});
-	res.end();
-*/

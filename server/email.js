@@ -19,28 +19,32 @@ const mailDeliverer = (name, email, message, emailSent, emailNotSent) => {
 		html: `User Name: ${name} <br><br> User Email: ${email} <br><br> User Messgae: ${message}`
 	};
 
-	transporter.sendMail(mailOptions, (err, content) => {
-		if(err){
-			success = false;
-			console.log('no' + '\n' + err);
-		}else{
-			success = true;
-			console.log('yes');
-		}
-		console.log(success);
-		transporter.close();
+	let sendMailPromise = new Promise((resolve, reject) => {
+		transporter.sendMail(mailOptions, (err, content) => {
+			if(err){
+				success = false;
+				reject('failed');
+				console.log('failed' + '\n' + err);
+			}else{
+				success = true;
+				resolve('success');
+				console.log('success');
+			}
+			transporter.close();
+		})
 	});
 
-	setTimeout(() => {
+	sendMailPromise.then(() => {
 		if(success == true){
 			console.log('sent');
 			emailSent();
-		}else if((success == false)){
+		}
+	}).catch(() => {
+		if(success == false){
 			console.log('not sent');
 			emailNotSent();
 		}
-	}, 7000);
-	
+	});
 }
 
 module.exports = {mailDeliverer};
