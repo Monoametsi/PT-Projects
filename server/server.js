@@ -5,7 +5,7 @@ const { parse } = require('querystring');
 const {mailDeliverer} = require('./email');
 
 const server = http.createServer((req, res) => {
-	let HTML = 'HTML' + '//' + 'index.html';
+	let HTML = 'HTML' + '\\' + 'index.html';
 	let successPath = 'contact-us' + '\\' + 'success.html';
 	let failurePath = 'contact-us' + '\\' + 'failure.html';
 	let notFound = 'HTML' + '\\' + 'notfound.html';
