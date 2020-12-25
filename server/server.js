@@ -14,7 +14,7 @@ const server = http.createServer((req, res) => {
 	let filePath = path.join(__dirname, req.url === '/' ?  HTML : req.url);
 	let filePathSuccess = path.join(dirname, req.url === '/contact-us' ?  successPath : req.url);
 	let filePathFailure = path.join(dirname, req.url === '/contact-us' ?  failurePath : req.url);
-
+	console.log(__dirname);
 	let extName = path.extname(filePath);
 
 	let contentType = 'text/html';
