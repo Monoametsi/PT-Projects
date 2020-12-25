@@ -11,10 +11,10 @@ const server = http.createServer((req, res) => {
 	let notFound = 'HTML' + '\\' + 'notfound.html';
 
 	let dirname = __dirname.slice(0, __dirname.search('SERVER') - 1);
-	let filePath = path.join(__dirname, req.url === '/' ?  HTML : req.url);
+	let filePath = path.join(dirname, req.url === '/' ?  HTML : req.url);
 	let filePathSuccess = path.join(dirname, req.url === '/contact-us' ?  successPath : req.url);
 	let filePathFailure = path.join(dirname, req.url === '/contact-us' ?  failurePath : req.url);
-	console.log(__dirname);
+	console.log(filePath);
 	let extName = path.extname(filePath);
 
 	let contentType = 'text/html';
