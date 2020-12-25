@@ -10,7 +10,7 @@ const server = http.createServer((req, res) => {
 	let failurePath = 'contact-us' + '\\' + 'failure.html';
 	let notFound = 'HTML' + '\\' + 'notfound.html';
 
-	let dirname = __dirname.slice(0, __dirname.search('SERVER') - 1);
+	let dirname = __dirname.slice(0, __dirname.search('/SERVER/i') - 1);
 	let filePath = path.join(dirname, req.url === '/' ?  HTML : req.url);
 	let filePathSuccess = path.join(dirname, req.url === '/contact-us' ?  successPath : req.url);
 	let filePathFailure = path.join(dirname, req.url === '/contact-us' ?  failurePath : req.url);
