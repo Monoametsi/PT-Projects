@@ -5,7 +5,7 @@ const { parse } = require('querystring');
 const {mailDeliverer} = require('./email');
 
 const server = http.createServer((req, res) => {
-	let HTML = 'HTML' + '\\' + 'index.html';
+	let HTML = 'HTML' + '//' + 'index.html';
 	let successPath = 'contact-us' + '\\' + 'success.html';
 	let failurePath = 'contact-us' + '\\' + 'failure.html';
 	let notFound = 'HTML' + '\\' + 'notfound.html';
@@ -14,7 +14,7 @@ const server = http.createServer((req, res) => {
 	let filePath = path.join(dirname, req.url === '/' ?  HTML : req.url);
 	let filePathSuccess = path.join(dirname, req.url === '/contact-us' ?  successPath : req.url);
 	let filePathFailure = path.join(dirname, req.url === '/contact-us' ?  failurePath : req.url);
-	console.log(filePath);
+	console.log(dirname);
 	let extName = path.extname(filePath);
 
 	let contentType = 'text/html';
