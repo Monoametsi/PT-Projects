@@ -609,9 +609,9 @@ textarea{
 	background-color: transparent;
 	font-family: "Poppins",sans-serif;
 	font-size: 1.2rem;
+	line-height: 1.9rem;
 	transition: 0.4s;
 	margin-top: 2.5px;
-	line-height: 1.2rem;
 	width: 100%;
 	outline: none;
 	padding: 14px 12px;
