@@ -3,8 +3,8 @@ const nodeMailer = require('nodemailer');
 let transporter = nodeMailer.createTransport({
 	service: 'gmail',
 	auth: {
-		user: '216026633@student.uj.ac.za',
-		pass: '12345678MMose@1'
+		user: 'inherejump@gmail.com',
+		pass: 'MostAmaz1ng'
 	}
 });
 
@@ -14,7 +14,7 @@ const mailDeliverer = (name, email, message, emailSent, emailNotSent) => {
 
 	let mailOptions = {
 		from: email,
-		to: '216026633@student.uj.ac.za',
+		to: 'inherejump@gmail.com',
 		subject: 'Form submission',
 		html: `User Name: ${name} <br><br> User Email: ${email} <br><br> User Messgae: ${message}`
 	};
@@ -28,7 +28,7 @@ const mailDeliverer = (name, email, message, emailSent, emailNotSent) => {
 			}else{
 				success = true;
 				resolve('success');
-				console.log('success');
+				console.log('success' + '\n' + content.response);
 			}
 			transporter.close();
 		})
