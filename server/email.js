@@ -3,7 +3,7 @@ const nodeMailer = require('nodemailer');
 let transporter = nodeMailer.createTransport({
 	service: 'gmail',
 	auth: {
-		user: 'inherejump@gmail.com',
+		user: 'pt.projects.submission@gmail.com',
 		pass: 'MostAmaz1ng'
 	}
 });
@@ -14,7 +14,7 @@ const mailDeliverer = (name, email, message, emailSent, emailNotSent) => {
 
 	let mailOptions = {
 		from: email,
-		to: 'inherejump@gmail.com',
+		to: '216026633@student.uj.ac.za',
 		subject: 'Form submission',
 		html: `User Name: ${name} <br><br> User Email: ${email} <br><br> User Messgae: ${message}`
 	};

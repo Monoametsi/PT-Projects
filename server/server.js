@@ -43,7 +43,7 @@ const server = http.createServer((req, res) => {
 				if(err.code == 'ENOENT'){
 					fs.readFile(path.join(dirname, err.code == 'ENOENT' ? notFound : req.url), (err,content) => {
 						console.log(req.url);
-						res.writeHead(200, {'Content-type': contentType});
+						res.writeHead(404, {'Content-type': contentType});
 						res.end(content, 'utf8');
 					});
 				}else{
@@ -101,7 +101,7 @@ const server = http.createServer((req, res) => {
 							res.end(`Server error: ${err.code}`);
 						}
 					}else{
-						res.writeHead(200, {'Content-type': contentType});;
+						res.writeHead(400, {'Content-type': contentType});;
 						res.end(content, 'utf8');
 					}
 				});
@@ -116,10 +116,10 @@ const server = http.createServer((req, res) => {
 				let emailRegEx = emailOneDot.test(email) || emailTwoDots.test(email) || emailThreeDots.test(email);
 
 				if(name == '' || message == ''|| email == ''){
-					res.writeHead(200, {'Content-type': contentType});
+					res.writeHead(400, {'Content-type': contentType});
 					res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 2rem;">Its is a required that all fields be filled in.</h1>');
 				}else if(emailRegEx === false){
-					res.writeHead(200, {'Content-type': contentType});
+					res.writeHead(400, {'Content-type': contentType});
 					res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 2rem;">Invalid email</h1>');
 				}else{
 					mailDeliverer(name, email, message, success, failure);
