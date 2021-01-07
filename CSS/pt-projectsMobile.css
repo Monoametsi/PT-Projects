@@ -125,7 +125,7 @@
 		width: 100%;
 		height: auto;
 	}
-	
+
 	.missionStatement-box:last-child{
 		align-items: stretch;
 		justify-content: stretch;
@@ -134,12 +134,12 @@
 	.project-box{
 		width: 400px;
 	}
-	
+
 	.projectModal-box{
 		max-width: 450px;
 		height: 550px;
 	}
-	
+
 	.projectModal-box > .project-image img{
 		height: 300px;
 	}
