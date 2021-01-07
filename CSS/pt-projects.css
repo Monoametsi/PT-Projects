@@ -238,12 +238,11 @@ section{
 	flex-wrap: wrap;
 	justify-content: space-around;
 	align-items: center;
-	margin: 0 2.5rem;
-	margin-top: 3.5rem;
+	margin: 3.5rem 2.5rem;
 }
 
 .service-list{
-	margin-top: 2rem;
+	margin: 2rem 2.5rem;
 }
 
 .missionStatement-box, .service-box, .project-box{
@@ -256,8 +255,20 @@ section{
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	/*background-color: #fff;
-	box-shadow: 6px 4px 8px rgba(0,0,0,0.2), -4px -2px 8px rgba(0,0,0,0.2), -2px -1px 8px rgba(0,0,0,0.2);*/
+	background-color: #fff;
+	box-shadow: 0 0 12px rgba(0,0,0,0.2);
+}
+
+.service-box{
+	height: 35rem;
+	align-items: stretch;
+	justify-content: stretch;
+}
+
+.missionStatement-box{
+	height: 23rem;
+	align-items: stretch;
+	justify-content: stretch;
 }
 
 .project-slideshow{
@@ -273,8 +284,7 @@ section{
 }
 
 .missionStatement-box:hover, .service-box:hover{
-	background-color: #fff;
-	box-shadow: 2px 1px 8px rgba(0,0,0,0.2), -1px -1px 4px rgba(0,0,0,0.2), 0 0 2px rgba(0,0,0,0.2);
+	box-shadow: 0 0 3px rgba(0,0,0,0.2);
 }
 
 .project-box{
@@ -312,6 +322,10 @@ section{
 	-webkit-box-orient: vertical;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+
+.serviceBox-image{
+	align-self: center;
 }
 
 .serviceBox-image img{
