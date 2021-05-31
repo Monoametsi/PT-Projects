@@ -14,6 +14,7 @@ const server = http.createServer((req, res) => {
 	let filePath = path.join(dirname, req.url === '/' ?  HTML : req.url);
 	let filePathSuccess = path.join(dirname, req.url === '/contact-us' ?  successPath : req.url);
 	let filePathFailure = path.join(dirname, req.url === '/contact-us' ?  failurePath : req.url);
+	let serverErr;
 
 	let extName = path.extname(filePath);
 
@@ -40,15 +41,19 @@ const server = http.createServer((req, res) => {
 	if(req.url !== '/contact-us'){
 		fs.readFile(filePath, (err, content) => {
 			if(err){
-				if(err.code == 'ENOENT'){
+				if(err.code == 'ENOENT'){	
 					fs.readFile(path.join(dirname, err.code == 'ENOENT' ? notFound : req.url), (err,content) => {
 						console.log(req.url);
 						res.writeHead(404, {'Content-type': contentType});
 						res.end(content, 'utf8');
 					});
 				}else{
+					
+					serverErr = `<h1 style="text-align: center; margin-top: 40vh; font-size: 4rem;">Server error: ${ err.code }<br>return to home 
+								page by clicking <a href="/">here</a></h1>`
+					
 					res.writeHead(500);
-					res.end(`<h1 style="text-align: center; margin-top: 40vh; font-size: 4rem;">Server error: ${err.code}</h1>`);
+					res.end(serverErr);
 				}
 			}else{
 				res.writeHead(200, {'Content-type': contentType});
@@ -77,8 +82,12 @@ const server = http.createServer((req, res) => {
 								res.end(content, 'utf8');
 							});
 						}else{
+							
+						serverErr = `<h1 style="text-align: center; margin-top: 40vh; font-size: 4rem;">Server error: ${ err.code }<br>return to home 
+									page by clicking <a href="/">here</a></h1>`
+							
 							res.writeHead(500);
-							res.end(`Server error: ${err.code}`);
+							res.end(serverErr);
 						}
 					}else{
 						res.writeHead(200, {'Content-type': contentType});
@@ -97,8 +106,13 @@ const server = http.createServer((req, res) => {
 								res.end(content, 'utf8');
 							});
 						}else{
+							
+							
+							serverErr = `<h1 style="text-align: center; margin-top: 40vh; font-size: 4rem;">Server error: ${ err.code }<br>return to home 
+										page by clicking <a href="/">here</a></h1>`
+							
 							res.writeHead(500);
-							res.end(`Server error: ${err.code}`);
+							res.end(serverErr);
 						}
 					}else{
 						res.writeHead(400, {'Content-type': contentType});;
@@ -109,20 +123,31 @@ const server = http.createServer((req, res) => {
 
 			req.on('end', () => {
 				formData = parse(body);
-				let {name, email, message} = formData;
+				let { name, email, message } = formData;
+				let nameVal = name.trim() === '' || name.trim().length === 0 || name === undefined || name === null;
+				let messageVal = message.trim() === '' || message.trim().length === 0 || message === undefined || message === null;
+				let emailVal = email.trim() === '' || email.trim().length === 0 || email === undefined || email === null;
 				let emailOneDot = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,3}$/;
 				let emailTwoDots = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2}\.[A-Za-z]{2}$/;
 				let emailThreeDots = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,15}\.[A-Za-z]{2}\.[A-Za-z]{2}$/;
-				let emailRegEx = emailOneDot.test(email) || emailTwoDots.test(email) || emailThreeDots.test(email);
+				let emailRegEx = emailOneDot.test(email.trim()) || emailTwoDots.test(email.trim()) || emailThreeDots.test(email.trim());
 
-				if(name == '' || message == ''|| email == ''){
+				if(nameVal || messageVal || emailVal){
 					res.writeHead(400, {'Content-type': contentType});
-					res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 2rem;">Its is a required that all fields be filled in.</h1>');
+					res.end(`<div style="text-align: center; margin-top: 40vh;">
+					<h1 style="text-align: center; font-size: 2rem;">Its is a required that all fields be filled in.</h1>
+					<br><br> 
+					<h1 style="text-align: center; font-size: 2rem;">Return to home page by clicking <a href="/">here</a></h1>
+					</div>`);
 				}else if(emailRegEx === false){
 					res.writeHead(400, {'Content-type': contentType});
-					res.end('<h1 style="text-align: center; margin-top: 40vh; font-size: 2rem;">Invalid email</h1>');
+					res.end(`<div style="text-align: center; margin-top: 40vh;">
+					<h1 style="text-align: center; font-size: 2rem;">Invalid email</h1>
+					<br><br> 
+					<h1 style="text-align: center; font-size: 2rem;">Return to home page by clicking <a href="/">here</a></h1>
+					</div>`);
 				}else{
-					mailDeliverer(name, email, message, success, failure);
+					mailDeliverer(name.trim(), email.trim(), message.trim(), success, failure);
 				}
 			});
 		}
