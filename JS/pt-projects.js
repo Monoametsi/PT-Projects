@@ -12,9 +12,17 @@ let projectsSect = document.getElementById('project-cont');
 let contactUs = document.getElementById('Contact-Us');
 let contactUsSect = document.getElementById('contactUs-cont');
 
-/*let scrollDown = window.pageYOffset;
+let scrollDown = window.pageYOffset;
 
 function navHider(){
+	
+	let htmlDocScroll = document.documentElement.scrollTop;
+
+	if(htmlDocScroll > 20){
+		topNav.classList.add('navBgColor');
+	}else{
+		topNav.classList.remove('navBgColor');
+	}
 	
 	let scrollUp = window.pageYOffset;
 	if(scrollDown > scrollUp){
@@ -24,7 +32,7 @@ function navHider(){
 	}
 	
 	scrollDown = scrollUp;
-}*/
+}
 
 //menu toggle
 let menuToggle = document.getElementById('menu-toggle');
@@ -32,9 +40,17 @@ let menuToggle = document.getElementById('menu-toggle');
 function navToggle(menu){
 	
 	menu.classList.toggle('change');
+	
+	if(document.documentElement.scrollTop === 0 || document.body.scrollTop === 0){
+		menu.parentElement.parentElement.classList.add('bg-color');
+	}else{
+		menu.parentElement.parentElement.classList.remove('bg-color');
+	}
+
 
 	if(nav.style.maxHeight){
 		nav.style.maxHeight = null;
+		menu.parentElement.parentElement.classList.remove('bg-color');
 	}else{
 		nav.style.maxHeight = nav.scrollHeight + 'px';
 	}
@@ -44,13 +60,10 @@ menuToggle.onclick = function(){
 	navToggle(this);
 }
 
+navHider();
+
 window.onscroll = function(){
-	let htmlDocScroll = document.documentElement.scrollTop;
-	if(htmlDocScroll > 20){
-		topNav.classList.add('navBgColor');
-	}else{
-		topNav.classList.remove('navBgColor');
-	}
+	navHider();
 
 	onScrollNavClassAdder(aboutUsSect, aboutUs);
 	onScrollNavClassAdder(serviceSect, service);
@@ -96,6 +109,7 @@ function navToSectScroller(section,e,thisElemnt){
 	e.preventDefault();
 	let sect = section;
 	let pagePos = 0;
+	let pagePosY = 0;
 	let scrollerDownLooper = setInterval(scrollerDown, 20);
 
 	for(i = 0; i < line.length; i++){
@@ -106,11 +120,13 @@ function navToSectScroller(section,e,thisElemnt){
 
 	function scrollerDown(){
 		let htmlDocScroll = document.documentElement.scrollTop;
-		let sectionOffsetTop = sect.offsetTop - topNav.clientHeight;
+		// let sectionOffsetTop = sect.offsetTop - topNav.offsetHeight;
+		let sectionOffsetTop = sect.offsetTop;
 		
 		if(htmlDocScroll < sectionOffsetTop){
 			scrollBy(0, pagePos++);
 		}else{
+			htmlDocScroll = sectionOffsetTop
 			clearInterval(scrollerDownLooper);
 		}
 	}
@@ -119,11 +135,14 @@ function navToSectScroller(section,e,thisElemnt){
 	
 	function scrollerUp(){
 		let htmlDocScroll = document.documentElement.scrollTop;
-		let sectionOffsetTop = sect.offsetTop - topNav.clientHeight + 65;
+		// let sectionOffsetTop = sect.offsetTop - topNav.offsetHeight;
+		let sectionOffsetTop = sect.offsetTop;
 
 		if(htmlDocScroll > sectionOffsetTop){
-			scrollBy(0, pagePos--);
+			scrollBy(0, pagePosY--);
 		}else{
+			
+			htmlDocScroll = sectionOffsetTop
 			clearInterval(scrollerUpLooper);
 		}
 	}
