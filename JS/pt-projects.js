@@ -14,6 +14,12 @@ let contactUsSect = document.getElementById('contactUs-cont');
 
 let scrollDown = window.pageYOffset;
 
+// let num = document.getElementById('num');
+
+// window.onresize = () => {
+	// num.innerHTML = window.innerWidth;
+// }
+
 function navHider(){
 	
 	let htmlDocScroll = document.documentElement.scrollTop;
@@ -32,6 +38,13 @@ function navHider(){
 	}
 	
 	scrollDown = scrollUp;
+}
+
+let htmlDocScroll = document.documentElement.scrollTop;
+if(htmlDocScroll > 20){
+		topNav.classList.add('navBgColor');
+}else{
+	topNav.classList.remove('navBgColor');
 }
 
 //menu toggle
@@ -60,7 +73,7 @@ menuToggle.onclick = function(){
 	navToggle(this);
 }
 
-navHider();
+// navHider();
 
 window.onscroll = function(){
 	navHider();
