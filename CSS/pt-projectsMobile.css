@@ -407,6 +407,10 @@
 
 @media screen and (max-width: 500px){
 	
+	.preloader{
+		padding: 2rem;
+	}
+	
 	.projectModal-box > .project-image img, .projectModal-box > .project-image{
 		max-width: 100%;
 	}
@@ -477,6 +481,13 @@
 }
 
 @media screen and (max-width: 380px){
+
+	@keyframes loader{
+		0%{ transform: rotate(0deg);  box-shadow: 40px 40px 1px  #0fefda; }
+		50%{ transform: rotate(180deg);  box-shadow: 40px 40px 85px  #0fefda; }
+		100%{  transform: rotate(360deg);  box-shadow: 40px 40px 1px  #0fefda;}
+	}
+
 	
 	.section-descript{
 		margin-top: -1.8rem;
