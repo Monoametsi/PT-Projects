@@ -112,8 +112,6 @@ bookMarker(event);
 
 window.onload = () => {
 
-	;
-
 	let preloader = document.getElementById('preloader-bg-cont');
 	
 	preloader.classList.add('smooth-out');
