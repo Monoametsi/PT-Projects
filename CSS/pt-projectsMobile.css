@@ -329,11 +329,11 @@
 	}
 	
 	.project-box > .project-image > img{
-		filter:brightness(80%);
+		filter: brightness(80%);
 	}
 	
 	.project-box > .project-image > img:hover{
-		filter:brightness(100%);
+		filter: brightness(100%);
 	}
 
 	.project-slideshow > .arrow{

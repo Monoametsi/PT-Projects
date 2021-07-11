@@ -105,12 +105,14 @@ let bookMarker = function(e) {
 	}
 }
 
+document.body.style.overflow = 'hidden';
+document.documentElement.style.overflow = 'hidden';
+
 bookMarker(event);
 
 window.onload = () => {
 
-	document.body.style.overflow = 'hidden';
-	document.documentElement.style.overflow = 'hidden';
+	;
 
 	let preloader = document.getElementById('preloader-bg-cont');
 	
