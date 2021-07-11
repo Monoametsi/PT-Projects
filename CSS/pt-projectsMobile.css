@@ -312,10 +312,6 @@
 
 @media screen and (max-width: 550px){
 	
-	.companyTitle-cont-cont{
-		width: 100%;
-	}
-	
 	.project-slideshow{
 		border-radius: 5px;
 		overflow: hidden;
@@ -411,6 +407,10 @@
 
 @media screen and (max-width: 500px){
 	
+	.companyTitle-cont-cont{
+		width: 100%;
+	}
+	
 	.preloader{
 		padding: 2rem;
 	}
@@ -458,6 +458,10 @@
 }
 
 @media screen and (max-width: 480px){
+	
+	.nav-link a{
+		font-size: 1.1rem;
+	}
 	
 	.project-slideshow > .arrow{
 		font-size: 2.5rem;
