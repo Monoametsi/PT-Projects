@@ -29,7 +29,7 @@ window.onload = () => {
 		
 		preloader.style.display = 'none';
 		
-	}, 300)
+	}, 300);
 	
 }
 
