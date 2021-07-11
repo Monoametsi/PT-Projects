@@ -44,8 +44,7 @@ function addLine(){
 					
 					underLine.classList.add('fullLine');
 				}
-
-				
+	
 			}
 
 		}
@@ -64,9 +63,10 @@ let bookMarker = function(e) {
 			let linkName = this.children[0].hash;
 
 			for(j = 0; j < sections.length; j++){
+
 				let sectionId = `#${ sections[j].id }`;
 				let sectionOffSetTop = sections[j].offsetTop - topNav.scrollHeight;
-				
+
 				if(sectionOffSetTop < 0){
 					sectionOffSetTop = 0;
 				}
@@ -76,14 +76,11 @@ let bookMarker = function(e) {
 					let count = 0;
 
 					let scrollMover = setInterval(() => {
-						
 
 						if(document.documentElement.scrollTop < sectionOffSetTop){
 							scrollBy(0, count++);
-							
+
 							if(document.documentElement.scrollTop >= sectionOffSetTop){
-								
-								
 								
 								document.documentElement.scrollTop = sectionOffSetTop;
 								clearInterval(scrollMover);
@@ -93,8 +90,7 @@ let bookMarker = function(e) {
 							scrollBy(0, count--);
 							
 							if(document.documentElement.scrollTop <= sectionOffSetTop){
-
-								
+	
 								document.documentElement.scrollTop = sectionOffSetTop;
 								clearInterval(scrollMover);
 							}
@@ -207,10 +203,13 @@ function scroller(){
 	let scrollTopLoop = setInterval(scrollTopper, 20);
 
 	function scrollTopper(){
+
 		if(document.documentElement.scrollTop === 0){
 			clearInterval(scrollTopLoop);
+
 		}else{
 			scrollBy(0, pagePos--);
+
 		}
 	}
 }

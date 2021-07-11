@@ -99,7 +99,7 @@ img{
 	height: 100vh;
 	min-height: 40rem;
 	background-attachment: fixed;
-	background-position: bottom left;
+	background-position: bottom right;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url('../IMAGES/img-Concor-homepage-banner-kromrivier_jeffreys_premix_train_t.jpg'); 

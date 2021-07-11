@@ -68,6 +68,10 @@
 		margin-left: 1.4rem;
 	}
 	
+	.nav-link:last-child{
+		margin-right: 1.4rem;
+	}
+	
 	.mobile-logo-title{
 		display: flex;
 	}
@@ -349,11 +353,11 @@
 		padding: 8px;
 	}
 	
-	#left{
+	#left, #modal-left{
 		left: 8px;
 	}
 	
-	#right{
+	#right, #modal-right{
 		right: 8px;
 	}
 
@@ -458,6 +462,10 @@
 }
 
 @media screen and (max-width: 480px){
+	
+	#home{
+		background-position: center;
+	}
 	
 	.nav-link a{
 		font-size: 1.1rem;
