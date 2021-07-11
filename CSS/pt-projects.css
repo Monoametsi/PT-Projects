@@ -16,6 +16,11 @@ a{
 	text-decoration: none;
 }
 
+section:first-of-type{
+	margin: 0;
+	margin-bottom: 4rem;
+}
+
 section{
 	margin: 0 3rem;
 	margin-bottom: 4rem;
@@ -85,11 +90,11 @@ img{
 /* 50%{  padding: 2rem; box-shadow: 0 0 2px #0fefda; background-color: #0fefda;} */
 /* 100%{  padding: 4rem; } */
 
-#contactUs-cont{
+#contact-us{
 	margin-top: 6rem;
 }
 
-#header{
+#home{
 	display: flex;
 	height: 100vh;
 	min-height: 40rem;
@@ -111,7 +116,6 @@ img{
 	justify-content: center;
 	flex-direction: column;
 	z-index: 0;
-	/* background-color: red; */
 }
 
 .company-title{
@@ -150,6 +154,8 @@ img{
 	align-items: center;
 	justify-content: space-around;
 	top: 0;
+	left: 0;
+	right: 0;
 	position: fixed;
 	margin: 0;
 	padding: 0;
@@ -160,16 +166,12 @@ img{
 }
 
 .navBgColor, .bg-color{
-	background-color: rgba(0,0,0,0.8);
-	box-shadow: 0 0 10px rgba(0,0,0,0.6);
+	background-color: rgba(34, 40, 49, 0.8);
+	box-shadow: 0 0 10px rgba(34, 40, 49, 0.6);
 }
 
 .navBgColor:hover, .bg-color:hover{
-	background-color: rgba(0,0,0,1);
-}
-
-.nav-span{
-	white-space: nowrap;
+	background-color: rgba(34, 40, 49, 1);
 }
 
 .logo-title, .mobile-logo-cont{
@@ -184,10 +186,6 @@ img{
 	display: none;
 	padding:0 18px;
 	justify-content: space-between;
-}
-
-.nav{
-	/* background-color: red; */
 }
 
 .logo-title a{
@@ -236,15 +234,26 @@ img{
 .nav{
 	display: flex;
 	list-style: none;
+	padding-left: 0;
 }
 
 .nav-link{
+	display: flex;
+	flex-direction: column;
 	cursor: pointer;
-	padding: 10px 15px;
-	margin: 0 8px;
+	margin: 0 1.4rem;
 }
 
-.nav a{
+.nav-link:first-child{
+	margin-left: 0;
+}
+
+.nav-link:last-child{
+	margin-right: 0;
+}
+
+.nav-link a{
+	padding: 10px 0;
 	color: #fff;
 	font-size: 1.4rem;
 	text-decoration: none;
@@ -258,10 +267,10 @@ img{
 .line{
 	width: 0;
 	border: 0;
-	margin: 10px 0 auto 0;
+	/* margin: 10px 0 auto 0; */
 	border-bottom: 2px solid #F5F5F5;
 	opacity: 0;
-	transition: 0.3s;
+	transition: 0.2s;
 }
 
 .nav-link:hover .line{
@@ -396,6 +405,7 @@ img{
 	display: flex;
 	width: 120px;
 	max-width: 120px;
+	user-select: none;
 }
 
 .serviceBox-image img{
@@ -409,6 +419,7 @@ img{
 	max-width: 400px;
 	border-radius: 5px 5px 0 0;
 	overflow: hidden;
+	user-select: none;
 }
 
 .project-image img{

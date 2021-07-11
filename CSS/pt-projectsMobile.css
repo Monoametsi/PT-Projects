@@ -64,6 +64,10 @@
 		transition: 0.6s;
 	}
 	
+	.nav-link:first-child{
+		margin-left: 1.4rem;
+	}
+	
 	.mobile-logo-title{
 		display: flex;
 	}
