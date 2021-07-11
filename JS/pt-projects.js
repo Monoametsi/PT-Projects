@@ -20,6 +20,19 @@ let scrollDown = window.pageYOffset;
 	// num.innerHTML = window.innerWidth;
 // }
 
+window.onload = () => {
+	let preloader = document.getElementById('preloader-bg-cont');
+	
+	preloader.classList.add('smooth-out');
+	
+	setTimeout(() => {
+		
+		preloader.style.display = 'none';
+		
+	}, 300);
+	
+}
+
 function navHider(){
 	
 	let htmlDocScroll = document.documentElement.scrollTop;
